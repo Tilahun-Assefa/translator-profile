@@ -13,17 +13,22 @@ import { TranslatorsListCardComponent } from './translators-list-card.component'
     </section>
     <article class="translator-list">
       <app-translators-list-card *ngFor="let translator of translatorService.profiles; let i=index" [index]="i" [translator]="translator">
-      </app-translators-list-card>
-      <!-- <ul>
-        <li *ngFor="let translator of translatorService.profiles">
-          {{translator.name}}
-          <p>{{translator.description}}</p>
-        </li>
-      </ul> -->
+      </app-translators-list-card>      
     </article>
   `,
-  styles: [
-  ]
+  styles: [`
+    .translator-list{
+      display:flex;
+      flex-wrap: wrap;
+      gap:20px;
+      padding:10px;
+    }
+
+    .profile-text{
+      font-size:25pt;
+      padding:10px;
+    }
+  `]
 })
 export class TranslatorsListComponent {
 

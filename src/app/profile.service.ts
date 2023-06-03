@@ -15,16 +15,13 @@ export class ProfileService {
   constructor() { }
   profiles: Translator[] = [
     {
-      name: "til", description: "til translate amharic", photoUrl: "assets/til.jpeg", address: "Olathe"
-
+      name: "til", description: "til translate amharic", photoUrl: "assets/img/til.jpg", address: "Olathe"
     },
     {
-      name: "John", description: "John translate english", photoUrl: "assets/john.jpeg", address: "Lenexa"
-
+      name: "John", description: "John translate english", photoUrl: "assets/img/john.jpg", address: "Lenexa"
     },
     {
-      name: "Amy", description: "Amy translate thai", photoUrl: "assets/amy.jpeg", address: "Gardner"
-
+      name: "Amy", description: "Amy translate thai", photoUrl: "assets/img/amy.jpg", address: "Gardner"
     }
   ]
 }

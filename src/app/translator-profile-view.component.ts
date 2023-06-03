@@ -9,12 +9,36 @@ import { ActivatedRoute } from '@angular/router';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <p>
-      translator-profile-view works!
-    </p>
+    <article class="details-panel" *ngIf="(translatorProfile$ | async) as profile">
+      <img class="main-img" src="{{profile.photoUrl}}" alt="Photo of {{profile.name}}"/>
+      <section>
+        <h1 class="main-text">Hi, {{profile.name}}</h1>
+        <h2>Address: <span class="emphasize">{{profile.address}}</span></h2>
+        <p>{{profile.description}}</p>
+      </section>
+    </article>
   `,
-  styles: [
-  ]
+  styles: [`
+  .details-panel{
+    display:flex;
+    padding:10px;
+    gap:50px;
+  }
+
+  .main-img{
+    border-radius: 10px;
+    width: 400px;
+  }
+
+  .main-text{
+    font-size: 34pt;
+    marigin-bottom: 20px;
+  }
+
+  .emphasize{
+    font-weight:bold;
+  }
+  `]
 })
 export class TranslatorProfileViewComponent implements OnInit {
 
