@@ -12,13 +12,12 @@ import { RouterModule } from '@angular/router';
       <img class="translator-img" src="{{translator.photoUrl}}" alt="photo of {{translator.name}}"/>
       <p class="profile-headline">Meet <span class="profile-name">{{translator.name}}</span></p>
       <p class="profile-description"><span class="profile-name"></span>{{translator.description}}</p>
-      <p class="profile-learn-more"><a href="details/{{index}}">Learn More</a></p>
-
-      <!-- <h3>
+      <!-- <p class="profile-learn-more"><a href="details/{{index}}">Learn More</a></p> -->
+      <h3>
         <a [title]="translator.name + ' details'" [routerLink]="['/details', index]">
           {{ translator.name }}
         </a>
-      </h3> -->
+      </h3>
     </article>
   `,
   styles: [`

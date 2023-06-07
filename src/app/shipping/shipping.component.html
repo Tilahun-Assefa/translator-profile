@@ -4,3 +4,13 @@
   <span>{{ shipping.type }}</span>
   <span>{{ shipping.price | currency }}</span>
 </div>
+<div>
+  <h1>Inventory</h1>
+  <select [ngModel]="quantity()" (change)="onChangeSelectedQuantity($any($event.target).value)">
+    <option disabled value="">--select a quantity--</option>
+    <option *ngFor="let q of qtyAvailable()">{{q}}</option>
+  </select>
+</div>
+<div>Shipping Cost: {{selectedShippingCost().type}}</div>
+<div>Price: {{selectedShippingCost().price | number:'1.2-2'}}</div>
+<div>Total Price: {{exPrice() | number:'1.2-2'}}</div>
