@@ -1,0 +1,11 @@
+.translator-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
+}
+
+.profile-text {
+    font-size: 25pt;
+    padding: 10px;
+}

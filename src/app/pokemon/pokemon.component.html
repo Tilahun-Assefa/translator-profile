@@ -1,0 +1,17 @@
+<div class="main-container">
+    <select [formControl]="selectedPokemon">
+        <option disabled value="">--select a pokemon--</option>
+        <option *ngFor="let pokemon of pokemonArr" [ngValue]="pokemon">
+            {{ pokemon.name }}
+        </option>
+    </select>
+
+    <div class="card">
+        <img src="{{selectedPokemon.value?.imageUrl}}" class="pokemon-image"
+            alt="Image of {{selectedPokemon.value?.name}}" />
+        <h2 class="pokemon-name">{{selectedPokemon.value?.name}}</h2>
+        <p class="pokemon-description">{{selectedPokemon.value?.description}}</p>
+    </div>
+    <button id="prev">Prev</button>
+    <button id="next">Next</button>
+</div>

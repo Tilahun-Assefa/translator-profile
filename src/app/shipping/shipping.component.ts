@@ -16,16 +16,16 @@ export class ShippingComponent {
   quantity = signal(1);
   qtyAvailable = signal([1, 2, 3, 4]);
 
-  selectedShippingCost= signal<ShippingCost>({id:1, type:"Port", price:70});
-  costs= signal<ShippingCost[]>([]);
-  exPrice= computed(()=>this.selectedShippingCost().price* this.quantity());
+  selectedShippingCost = signal<ShippingCost>({ id: 1, type: "Port", price: 70 });
+  costs = signal<ShippingCost[]>([]);
+  exPrice = computed(() => this.selectedShippingCost().price * this.quantity());
 
   constructor(private cartService: CartService) {
     console.log("constructor", this.quantity());
 
     this.quantity.update(qty => qty * 2);
 
-    this.selectedShippingCost.mutate(s=>s.price *=1.2 );
+    this.selectedShippingCost.mutate(s => s.price *= 1.2);
   }
 
   shippingCosts!: Observable<{ type: string, price: number }[]>;
