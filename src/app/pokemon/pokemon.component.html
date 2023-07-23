@@ -12,6 +12,10 @@
         <h2 class="pokemon-name">{{selectedPokemon.value?.name}}</h2>
         <p class="pokemon-description">{{selectedPokemon.value?.description}}</p>
     </div>
-    <button id="prev">Prev</button>
-    <button id="next">Next</button>
+    <div class="btn-container">
+        <button id="prev" class="btn" [disabled]="i<=0"><i class="fas fa-angle-double-left btn prev"
+                (click)="onPrev()"></i></button>
+        <button id="next" class="btn" [disabled]="i>=pokemonArr.length-1"><i class="fas fa-angle-double-right btn next"
+                (click)="onNext()"></i></button>
+    </div>
 </div>

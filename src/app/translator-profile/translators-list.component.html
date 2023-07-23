@@ -1,7 +1,7 @@
 <section class="profile-section">
-    <h2 class="profile-text">Translators List</h2>
+    <h2 class="profile-header">Translators List</h2>
+    <article class="translator-list">
+        <app-translators-list-card *ngFor="let translator of translatorService.profiles; let i=index" [index]="i"
+            [translator]="translator" />
+    </article>
 </section>
-<article class="translator-list">
-    <app-translators-list-card *ngFor="let translator of translatorService.profiles; let i=index" [index]="i"
-        [translator]="translator" />
-</article>
