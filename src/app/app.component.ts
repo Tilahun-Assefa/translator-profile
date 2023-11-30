@@ -6,7 +6,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     selector: 'app-root',
     template: ` 
     <app-top-bar/>     
-    <router-outlet></router-outlet>
+    <router-outlet/>
   `,
     styles: [],
     standalone: true,
