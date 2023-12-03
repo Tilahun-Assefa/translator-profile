@@ -12,5 +12,5 @@ import { RouterModule } from '@angular/router';
 })
 export class TranslatorListCardComponent {
   @Input() translator!: Translator;
-  @Input() index!:Number;
+  @Input() index!: Number;
 }
