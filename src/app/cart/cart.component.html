@@ -5,10 +5,13 @@
       <a routerLink="/shipping">Shipping Prices</a>
     </p>
   </header>
-  <div class="cart-card" *ngFor="let translator of translators">
+  @for (translator of translators; track $index) {
+  <div class="cart-card">
     <span>{{ translator.name }}</span>
     <span>{{ translator.price_hour | currency }}</span>
   </div>
+  }
+
 
   <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" class="cart-form">
     <div class="cart-form-row">

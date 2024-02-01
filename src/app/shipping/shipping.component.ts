@@ -2,17 +2,18 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, effect, signal } from '@angular/core';
 import { CartService } from '../cart/cart.service';
 import { Observable } from 'rxjs';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-shipping',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './shipping.component.html',
   styleUrls: ['./shipping.component.css']
 })
 export class ShippingComponent {
 
+  price = new FormControl('');
   quantity = signal(1);
   qtyAvailable = signal([1, 2, 3, 4]);
 
@@ -22,13 +23,10 @@ export class ShippingComponent {
 
   constructor(private cartService: CartService) {
     console.log("constructor", this.quantity());
-
-    this.quantity.update(qty => qty * 2);
-
-    this.selectedShippingCost.mutate(s => s.price *= 1.2);
+    // this.quantity.update(qty => qty * 2);
   }
 
-  shippingCosts!: Observable<{ type: string, price: number }[]>;
+  shippingCosts!: Observable<{ id: number, type: string, price: number }[]>;
 
   ngOnInit(): void {
     this.shippingCosts = this.cartService.getShippingPrices();
@@ -36,8 +34,12 @@ export class ShippingComponent {
 
   qtyEffect = effect(() => console.log("Latest quantity", this.quantity()));
 
-  onChangeSelectedQuantity(qty: number) {
-    this.quantity.set(qty);
+  onChangeSelectedQuantity(_qty: number) {
+    this.quantity.update(qty => qty = _qty);
+  }
+
+  onChangeSelectedPrice(price: number) {
+    this.selectedShippingCost.update((s: any) => ({ id: s.id, type: s.type, price: price }));
   }
 }
 

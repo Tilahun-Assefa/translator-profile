@@ -1,16 +1,28 @@
 <h3>Shipping Prices</h3>
-
-<div class="shipping-item" *ngFor="let shipping of shippingCosts | async">
-  <span>{{ shipping.type }}</span>
-  <span>{{ shipping.price | currency }}</span>
+@for (shippingCost of shippingCosts |async; track shippingCost.id) {
+<div class="shipping-item">
+  <span>{{ shippingCost.type }}</span>
+  <span>{{ shippingCost.price | currency }}</span>
 </div>
+}
+
 <div>
-  <h1>Inventory</h1>
+  <h1>Select Price</h1>
+  <label for="price">Price: </label>
+  <input id="price" type="text" [formControl]="price" (change)="onChangeSelectedPrice($any($event.target).value)" />
+</div>
+
+<div>
+  <h1>Select Quantity</h1>
+  <label for="quantity">Quantity: </label>
   <select [ngModel]="quantity()" (change)="onChangeSelectedQuantity($any($event.target).value)">
     <option disabled value="">--select a quantity--</option>
-    <option *ngFor="let q of qtyAvailable()">{{q}}</option>
+    @for (q of qtyAvailable(); track $index) {
+    <option [value]="q">{{q}}</option>
+    }
   </select>
 </div>
-<div>Shipping Cost: {{selectedShippingCost().type}}</div>
+
+<div>Shipping Type: {{selectedShippingCost().type}}</div>
 <div>Price: {{selectedShippingCost().price | number:'1.2-2'}}</div>
 <div>Total Price: {{exPrice() | number:'1.2-2'}}</div>

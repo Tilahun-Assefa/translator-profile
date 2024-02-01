@@ -15,6 +15,7 @@ import { CartService } from '../../cart/cart.service';
 export class TranslatorProfileViewComponent implements OnInit {
 
   translatorProfile$: Observable<Translator> | undefined;
+  profile: any;
 
   constructor(private profileService: ProfileService, private route: ActivatedRoute, private cartService: CartService) { }
 

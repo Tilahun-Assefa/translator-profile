@@ -8,7 +8,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
   selector: 'app-cart',
   standalone: true,
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
-  templateUrl:'cart.component.html',
+  templateUrl: 'cart.component.html',
   styleUrls: ['cart.component.css']
 })
 export class CartComponent {
@@ -16,10 +16,10 @@ export class CartComponent {
   translators = this.cartService.getItems();
 
   constructor(
-    private cartService: CartService, private formBuilder: FormBuilder
+    private cartService: CartService, private fb: FormBuilder
   ) { }
 
-  checkoutForm = this.formBuilder.group({
+  checkoutForm = this.fb.group({
     name: '',
     address: ''
   });
