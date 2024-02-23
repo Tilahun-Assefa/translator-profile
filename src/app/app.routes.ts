@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
 import { TranslatorsListComponent } from './translator-profile/translators-list.component';
-import { PokemonComponent } from './pokemon/pokemon.component';
-import { ShippingComponent } from './shipping/shipping.component';
 
 export const routes: Routes = [
     { path: 'list', component: TranslatorsListComponent },

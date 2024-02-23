@@ -1,0 +1,26 @@
+<div class="login-wrapper">
+  <div card class="box">
+    <h2>Register</h2>
+    <form class="example-form">
+      <div class="form-field">
+        <input class="example-full-width" placeholder="Username">
+      </div>
+      <div class="form-field">
+        <input class="example-full-width" placeholder="Email">
+      </div>
+      <div class="form-field">
+        <input class="example-full-width" placeholder="Password">
+      </div>
+      <div form-field>
+        <label class="example-full-width">Choose a role...</label>
+        <select [formControl]="selectedRole">
+          <option disabled value="">--select a role--</option>
+          @for (role of roles; track $index) {
+          <option [ngValue]="role">{{role}} </option>
+          }
+        </select>        
+      </div>
+      <button color="accent" class="btn-block">Register</button>
+    </form>
+  </div>
+  
