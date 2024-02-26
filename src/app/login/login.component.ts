@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule, FormControl, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { NgClass } from '@angular/common';
+import { LoginForm } from './user';
 
 @Component({
-    selector: 'dl-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css'],
-    standalone: true,
-    imports: [ FormsModule, ReactiveFormsModule, NgClass]
+  selector: 'dl-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
+  standalone: true,
+  imports: [FormsModule, ReactiveFormsModule, NgClass]
 })
 export class LoginComponent implements OnInit {
-  loginForm!: FormGroup;
+  loginForm!: FormGroup<LoginForm>;
   loading: boolean = false;
   submitted: boolean = false;
   returnUrl!: string;
   errorMessage: string = '';
 
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute,
+  constructor(private fb: FormBuilder, private route: ActivatedRoute,
     private router: Router, private authService: AuthService) {
     if (this.authService.userValue) {
       //if the user authenticated go to homepage
@@ -27,9 +28,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+    this.loginForm = this.fb.group<LoginForm>({
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
     });
     //set return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -39,14 +40,21 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
+  get email(): AbstractControl<any>| null {
+    return this.loginForm.get('email');
+  }
+  get password() {
+    return this.loginForm.get('password');
+  }
+
   onSubmit() {
     if (this.loginForm.invalid) {
-      this.errorMessage = "Incorrect Credential";      
+      this.errorMessage = "Incorrect Credential";
       return;
     }
     this.submitted = true;
     this.loading = true;
-    this.authService.login(this.f["username"].value, this.f["password"].value)
+    this.authService.login(this.f.email?.value, this.f.password?.value)
       .subscribe(
         {
           next: (data) => { this.router.navigate([this.returnUrl]); },
@@ -58,7 +66,4 @@ export class LoginComponent implements OnInit {
         });
   }
 
-  onBlur(f: { value: any; }) {
-    alert(f.value);
-  }
 }

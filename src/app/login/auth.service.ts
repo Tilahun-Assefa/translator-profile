@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Customer } from '../customer/customer';
 import { User } from './user';
 
 @Injectable({
@@ -24,7 +23,7 @@ export class AuthService {
     return this.userSubject.value;
   }
 
-  login(username: string | undefined, password: string | undefined): Observable<User> {
+  login(username: string | null, password: string | null): Observable<User> {
     return this.http.post<any>(`${environment.apiUrl}/customer/authenticate`, { email, password })
       .pipe(
         map(user => {
