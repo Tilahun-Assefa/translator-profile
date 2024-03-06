@@ -1,0 +1,12 @@
+<article class="profile-card">
+  <p class="profile-headline"> Meet <span class="profile-name">{{translator.name}}</span></p>
+  <p class="profile-description"><span class="profile-name"></span>{{translator.description}}</p>
+  <h3>
+    <a [title]="translator.name + ' details'" [routerLink]="['/details', index]">
+      {{ translator.name }}
+    </a>
+  </h3>
+  <button type="button" id="details" class="btn btn-primary">Details</button>
+  <button type="button" id="update" class="btn btn-success">Update</button>
+  <button type="button" id="delete" class="btn btn-danger">Delete</button>
+</article>

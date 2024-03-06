@@ -1,3 +1,4 @@
+import { AnimationBuilder } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
