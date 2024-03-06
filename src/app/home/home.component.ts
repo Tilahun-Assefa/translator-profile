@@ -7,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <p class="homeText">{{homeText}}</p>
   `,
-  styles: ``
+  styles: `.homeText{ 
+    font-size: 35px; 
+    color: red; 
+    text-align: center; 
+    position: relative; 
+    top:30px; 
+    text-shadow: 2px 2px 2px gray; 
+}`
 })
 export class HomeComponent implements OnInit{
   public homeText: string | undefined;

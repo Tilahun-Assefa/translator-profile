@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, CollapseModule],
   templateUrl: "menu.component.html",
   styleUrls: ['menu.component.css']
 })
