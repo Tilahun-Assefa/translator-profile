@@ -15,6 +15,10 @@ export class TranslatorRepositoryService {
     return this.http.get<Translator[]>(this.createCompleteRoute(route, this.envUrl.urlAddress));
   }
 
+  public getOneTranslator = (route: string) => {
+    return this.http.get<Translator>(this.createCompleteRoute(route, this.envUrl.urlAddress));
+  }
+
   public createTranslator = (route: string, translator: Translator) => {
     return this.http.post<Translator>(this.createCompleteRoute(route, this.envUrl.urlAddress), translator, this.generateHeaders());
   }

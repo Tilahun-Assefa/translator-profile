@@ -1,7 +1,11 @@
+import { TranslationOrder } from "./translation-order";
+
 export interface Translator {
+  id: string;
   name: string;
-  description: string;
-  photoUrl: string;
+  dateofstart: Date;
+  photoUrl?: string;
   address: string;
-  price_hour: number;
+
+  translation_orders?: TranslationOrder[];
 }
