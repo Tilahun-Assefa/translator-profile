@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TopBarComponent } from './top-bar/top-bar.component';
-import { MenuComponent } from "./menu/menu.component";
+import { MenuComponent } from "./top-bar/menu/menu.component";
 
 @Component({
     selector: 'app-root',
