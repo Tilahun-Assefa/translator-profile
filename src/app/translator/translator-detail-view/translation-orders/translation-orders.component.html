@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Translation type</th>
+            <th>Date created</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (order of orders; track $index) {
+          <tr (click)="onOrderClicked(order)">
+            <td>{{order.translationtype}}</td>
+            <td>{{order?.orderdate | date: 'dd/MM/yyyy'}}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

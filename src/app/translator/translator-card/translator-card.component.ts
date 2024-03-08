@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { Translator } from 'src/app/_interfaces/translator';
@@ -5,7 +6,7 @@ import { Translator } from 'src/app/_interfaces/translator';
 @Component({
   selector: 'app-translator-card',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: "translator-card.component.html",
   styleUrls: ['translator-card.component.css']
 })

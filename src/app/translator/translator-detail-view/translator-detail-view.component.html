@@ -1,10 +1,50 @@
-@if ( profile) {
-  <article class="details-panel">
-    <img class="main-img" src="{{profile.photoUrl}}" alt="Photo of {{profile.name}}"/>
-    <section>
-      <h1 class="main-text">Hi, {{profile.name}}</h1>
-      <h2>Address: <span class="emphasize">{{profile.address}}</span></h2>
-      <p>{{profile.address}}</p>
-    </section>
-  </article>
+@if ( translator_profile) {
+<article class="details-panel">
+  <img class="main-img" src="{{translator_profile.photoUrl}}" alt="Photo of {{translator_profile.name}}" />
+  <section>
+    <h1 class="main-text">Hi, {{translator_profile.name}}</h1>
+    <h2>Address: <span class="emphasize">{{translator_profile.address}}</span></h2>
+    <p>{{translator_profile.address}}</p>
+  </section>
+</article>
 }
+
+<h2>{{errorMessage}}</h2>
+
+<div class="card card-body bg-light mb-2 mt-2">
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Translator name:</strong>
+    </div>
+    <div class="col-md-3">
+      {{translator_profile.name}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Date of start:</strong>
+    </div>
+    <div class="col-md-3">
+      {{translator_profile.dateofstart | date: 'dd/MM/yyyy'}}
+    </div>
+  </div>
+  @if((translator_profile.translation_orders.length <= 2)){ <div class="row">
+    <div class="col-md-3">
+      <strong>Translator status:</strong>
+    </div>
+    <div class="col-md-3">
+      <span [appAppend]="translator_profile" class="text-success">Beginner Translator</span>
+    </div>
+</div>} @else {<div class="row">
+  <div class="col-md-3">
+    <strong>Translator status:</strong>
+  </div>
+  <div class="col-md-3">
+    <span class="text-info">Advanced Translator.</span>
+  </div>
+</div>}
+</div>
+
+<app-translation-orders [orders]="translator_profile.translation_orders" />
+<app-translation-orders [orders]="translator_profile.translation_orders" (onOrderClick)="printToConsole($event)" />

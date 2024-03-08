@@ -7,5 +7,5 @@ export interface Translator {
   photoUrl?: string;
   address: string;
 
-  translation_orders?: TranslationOrder[];
+  translation_orders: TranslationOrder[];
 }
