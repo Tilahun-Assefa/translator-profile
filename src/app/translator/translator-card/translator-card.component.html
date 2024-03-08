@@ -3,7 +3,7 @@
   <p class="profile-description"><span class="profile-name"></span>{{translator.address}}</p>
   <p class="profile-description"><span class="profile-name"></span>{{translator.dateofstart | date:'dd/MM/yyyy'}}</p>
   <h3>
-    <a [title]="translator.name + ' details'" [routerLink]="['/translator/details', index]">
+    <a [title]="translator.name + ' details'" [routerLink]="['/translator/details', translator.id]">
       {{ translator.name }}Details
     </a>
   </h3>

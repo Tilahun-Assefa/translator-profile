@@ -27,7 +27,7 @@ export class TranslatorDetailViewComponent {
     this.getOwnerDetails();
   }
   getOwnerDetails = () => {
-    const id: string = this.route.snapshot.params['index'];
+    const id: string = this.route.snapshot.params['id'];
     const apiUrl: string = `api/translator/${id}`;
     this.profileService.getOneTranslator(apiUrl)
       .subscribe({
