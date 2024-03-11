@@ -10,7 +10,7 @@ import { TranslationOrder } from 'src/app/_interfaces/translation-order';
   styleUrls: ['translation-orders.component.css']
 })
 export class TranslationOrdersComponent implements OnInit {
-  @Input() orders!: TranslationOrder[];
+  @Input() orders: TranslationOrder[] | undefined;
   @Output() onOrderClick: EventEmitter<TranslationOrder> = new EventEmitter();
 
   constructor() { }
