@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RegisterForm, User } from '../user';
 import { AuthService } from '../auth.service';
+import { UserRegisterForm } from 'src/app/_interfaces/user-register-form';
+import { User } from 'src/app/_interfaces/user';
 
 @Component({
   selector: 'dl-register',
@@ -12,9 +13,9 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm!: FormGroup<RegisterForm>;
+  registerForm!: FormGroup<UserRegisterForm>;
   user: User | undefined;
-  roles: any = ['Admin', 'Author', 'Reader'];
+  roles: string[] = ['Admin', 'Translator', 'User'];
   selectedRole: FormControl = new FormControl(this.roles[0]);
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
@@ -22,13 +23,15 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.registerForm = this.fb.group<RegisterForm>({
+    this.registerForm = this.fb.group<UserRegisterForm>({
       first_name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       last_name: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
-      role: new FormControl(''),
-      image_url: new FormControl('')
+      verify_password: new FormControl('', Validators.required),
+      telephone: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      role: new FormControl('', Validators.required),
     });
   }
 

@@ -1,8 +1,14 @@
 export interface TranslationOrder {
-  orderdate: Date;
-  translationtype: string;
+  order_date: Date;
+  document_title: string;
+  category: Category;
+  issuing_organization: string;
   price: number;
-  translatorid?: string;
-  languageid?: string;
-  customerid?: string;
+  translatorId?: string;
+  languageId?: string;
+  customerId?: string;
+}
+
+export enum Category{
+  "Insurance", "Construction", "Court", "Medical","LifeEvents", "Education","Police","Transport"
 }

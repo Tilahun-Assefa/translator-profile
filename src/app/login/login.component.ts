@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule, F
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { NgClass } from '@angular/common';
-import { LoginForm } from './user';
+import { UserLoginForm } from '../_interfaces/user-login-form';
 
 @Component({
   selector: 'dl-login',
@@ -13,7 +13,7 @@ import { LoginForm } from './user';
   imports: [FormsModule, ReactiveFormsModule, NgClass]
 })
 export class LoginComponent implements OnInit {
-  loginForm!: FormGroup<LoginForm>;
+  loginForm!: FormGroup<UserLoginForm>;
   loading: boolean = false;
   submitted: boolean = false;
   returnUrl!: string;
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginForm = this.fb.group<LoginForm>({
+    this.loginForm = this.fb.group<UserLoginForm>({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     });

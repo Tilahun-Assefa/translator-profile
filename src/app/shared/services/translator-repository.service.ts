@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { EnvironmentUrlService } from './environment-url.service';
 import { Translator } from 'src/app/_interfaces/translator';
 import { Observable } from 'rxjs';
+import { TranslatorCreateDto } from 'src/app/_interfaces/translator-create-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -19,14 +20,13 @@ export class TranslatorRepositoryService {
     return this.http.get<Translator>(this.createCompleteRoute(route, this.envUrl.urlAddress));
   }
 
-  public createTranslator = (route: string, translator: Translator) => {
+  public createTranslator = (route: string, translator: TranslatorCreateDto) => {
     return this.http.post<Translator>(this.createCompleteRoute(route, this.envUrl.urlAddress), translator, this.generateHeaders());
   }
 
   public updateTranslator = (route: string, translator: Translator) => {
     return this.http.put(this.createCompleteRoute(route, this.envUrl.urlAddress), translator, this.generateHeaders());
   }
-
   public deleteTranslator = (route: string) => {
     return this.http.delete(this.createCompleteRoute(route, this.envUrl.urlAddress));
   }

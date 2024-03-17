@@ -1,6 +1,5 @@
-export interface Customer {
-  name: string;
-  email: string;
-  telephoneno: string;
-  address: string;
+import { User } from "./user";
+
+export interface Customer extends User {
+
 }

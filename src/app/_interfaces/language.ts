@@ -1,4 +1,4 @@
 export interface Language {
-  name: string;
+  from_to_language: string;
   description: string;
 }
