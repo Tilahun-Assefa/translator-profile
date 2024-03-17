@@ -18,7 +18,7 @@ import { AppendDirective } from 'src/app/shared/directives/append.directive';
 })
 export class TranslatorDetailViewComponent {
   errorMessage: string = '';
-  translator_profile!: Translator;
+  translator!: Translator;
 
   constructor(private profileService: TranslatorRepositoryService,
     private route: ActivatedRoute, private errorHandler: ErrorHandlerService) { }
@@ -31,7 +31,7 @@ export class TranslatorDetailViewComponent {
     const apiUrl: string = `api/translator/${id}`;
     this.profileService.getOneTranslator(apiUrl)
       .subscribe({
-        next: (result: Translator) => this.translator_profile = result,
+        next: (result: Translator) => this.translator = result,
         error: (err: HttpErrorResponse) => {
           this.errorHandler.handleError(err);
           this.errorMessage = this.errorHandler.errorMessage;

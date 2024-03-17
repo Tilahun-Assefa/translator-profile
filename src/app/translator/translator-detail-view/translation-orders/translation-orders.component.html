@@ -4,15 +4,15 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Translation type</th>
+            <th>Translation Category</th>
             <th>Date created</th>
           </tr>
         </thead>
         <tbody>
           @for (order of orders; track $index) {
           <tr (click)="onOrderClicked(order)">
-            <td>{{order.translationtype}}</td>
-            <td>{{order?.orderdate | date: 'dd/MM/yyyy'}}</td>
+            <td>{{order.documentTitle}}</td>
+            <td>{{order?.orderDate | date: 'dd/MM/yyyy'}}</td>
           </tr>
           }
         </tbody>

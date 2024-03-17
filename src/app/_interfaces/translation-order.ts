@@ -1,8 +1,11 @@
 export interface TranslationOrder {
-  orderdate: Date;
-  translationtype: string;
+  id: string;
+  orderDate: Date;
+  documentTitle: string;
+  category: string;
+  issuingOrganization: string;
   price: number;
-  translatorid?: string;
-  languageid?: string;
-  customerid?: string;
+  translatorId?: string;
+  languageId?: string;
+  userId?: string;
 }

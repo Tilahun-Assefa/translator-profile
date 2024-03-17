@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, inject } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { Translator } from 'src/app/_interfaces/translator';
 
 @Component({
@@ -13,6 +13,4 @@ import { Translator } from 'src/app/_interfaces/translator';
 export class TranslatorCardComponent {
   @Input() translator!: Translator;
   @Input() index!: Number;
-
-
 }

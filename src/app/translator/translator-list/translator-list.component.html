@@ -4,7 +4,7 @@
 <section class="profile-section">
   <h2 class="profile-header">Translators List</h2>
   <article class="translator-list">
-    @for (translator of translators; track translator.name; let i=$index) {
+    @for (translator of translators; track translator.id; let i=$index) {
     <app-translator-card [index]="i" [translator]="translator" />
     }
   </article>

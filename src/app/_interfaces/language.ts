@@ -1,4 +1,8 @@
+import { TranslationOrder } from "./translation-order";
+
 export interface Language {
-  name: string;
+  id: string;
+  fromToLanguage: string;
   description: string;
+  translationOrders: TranslationOrder[];
 }

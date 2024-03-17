@@ -1,11 +1,10 @@
 import { TranslationOrder } from "./translation-order";
+import { User } from "./user";
 
-export interface Translator {
-  id: string;
-  name: string;
-  dateofstart: Date;
+export interface Translator extends User {
+  dateOfStart: Date;
+  bio:string;
   photoUrl?: string;
   address: string;
-
-  translation_orders: TranslationOrder[];
+  translationOrders: TranslationOrder[];
 }
