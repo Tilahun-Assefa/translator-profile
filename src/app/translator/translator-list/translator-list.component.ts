@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { Translator } from 'src/app/_interfaces/translator';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { TranslatorRepositoryService } from 'src/app/shared/services/translator-repository.service';

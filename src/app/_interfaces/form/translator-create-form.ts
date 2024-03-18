@@ -3,7 +3,6 @@ import { UserRegisterForm } from "./user-register-form";
 
 export interface TranslatorCreateForm extends UserRegisterForm {
   bio: FormControl<string | null>;
-  activity_status?: FormControl<boolean | null>;
-  start_date: FormControl<Date | null>;
-  image_url?: FormControl<string | null>;
+  startDate: FormControl<Date | null>;
+  imageUrl?: FormControl<string | null>;
 }

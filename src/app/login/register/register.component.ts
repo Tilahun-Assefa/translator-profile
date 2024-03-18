@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { UserRegisterForm } from 'src/app/_interfaces/user-register-form';
+import { UserRegisterForm } from 'src/app/_interfaces/form/user-register-form';
 import { User } from 'src/app/_interfaces/user';
 
 @Component({
@@ -24,11 +24,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.fb.group<UserRegisterForm>({
-      first_name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      last_name: new FormControl('', Validators.required),
+      firstName: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      lastName: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
-      verify_password: new FormControl('', Validators.required),
+      verifyPassword: new FormControl('', Validators.required),
       telephone: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
       role: new FormControl('', Validators.required),

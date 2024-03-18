@@ -1,6 +1,6 @@
 @if ( translator) {
 <article class="details-panel">
-  <img class="main-img" src="{{translator.photoUrl}}" alt="Photo of {{translator.firstName}}" />
+  <img class="main-img" src="{{translator.imageUrl}}" alt="Photo of {{translator.firstName}}" />
   <section>
     <h1 class="main-text">Name: {{translator.firstName}}</h1>
     <h2>Address: <span class="emphasize">{{translator.address}}</span></h2>
@@ -22,11 +22,11 @@
       <strong>Date of start:</strong>
     </div>
     <div class="col-md-3">
-      {{translator.dateOfStart | date: 'dd/MM/yyyy'}} date
+      {{translator.startDate | date: 'dd/MM/yyyy'}} date
     </div>
   </div>
 </div>
-@if((translator.translationOrders.length <= 2)){ <div class="row">
+@if((orders.length <= 2)){ <div class="row">
   <div class="col-md-3">
     <strong>Translator status:</strong>
   </div>
@@ -43,10 +43,5 @@
   </div>}
   <app-translation-orders [orders]="translator.translationOrders" (onOrderClick)="printToConsole($event)" />
   }
-
-
-
-
-
 
   <h2>{{errorMessage}}</h2>

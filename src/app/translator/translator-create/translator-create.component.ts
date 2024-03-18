@@ -5,8 +5,8 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { Translator } from 'src/app/_interfaces/translator';
-import { TranslatorCreateDto } from 'src/app/_interfaces/translator-create-dto';
-import { TranslatorCreateForm } from 'src/app/_interfaces/translator-create-form';
+import { TranslatorCreateDto } from 'src/app/_interfaces/dto/translator-create-dto';
+import { TranslatorCreateForm } from 'src/app/_interfaces/form/translator-create-form';
 import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/success-modal.component';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { TranslatorRepositoryService } from 'src/app/shared/services/translator-repository.service';
@@ -22,25 +22,24 @@ export class TranslatorCreateComponent {
   errorMessage: string = '';
   translatorCreateForm!: FormGroup<TranslatorCreateForm>;
   bsModalRef?: BsModalRef;
-  roles: string[] = ['Admin', 'Translator'];
+  roles: string[] = ['Admin', 'Translator', 'User'];
 
   constructor(private fb: FormBuilder, private repository: TranslatorRepositoryService, private errorHandler: ErrorHandlerService,
     private router: Router, private datePipe: DatePipe, private modal: BsModalService) { }
 
   ngOnInit(): void {
     this.translatorCreateForm = this.fb.group<TranslatorCreateForm>({
-      first_name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      last_name: new FormControl('', Validators.required),
+      firstName: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      lastName: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
-      verify_password: new FormControl('', Validators.required),
+      verifyPassword: new FormControl('', Validators.required),
       telephone: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
       bio: new FormControl(''),
-      start_date: new FormControl(new Date(), Validators.required),
-      activity_status: new FormControl(true, Validators.required),
+      startDate: new FormControl(new Date(), Validators.required),
       role: new FormControl('', Validators.required),
-      image_url: new FormControl('', Validators.required),
+      imageUrl: new FormControl('', Validators.required),
     });
   }
 
@@ -64,14 +63,15 @@ export class TranslatorCreateComponent {
 
   private executeTranslatorCreation = (translatorFormValue: TranslatorCreateForm) => {
     const translator: TranslatorCreateDto = {
-      first_name: translatorFormValue.first_name.value ,
-      last_name: translatorFormValue.last_name.value ,
-      email: translatorFormValue.email.value ,
-      password: translatorFormValue.password.value ,
-      bio: translatorFormValue.bio.value ,
-      activity_status: translatorFormValue.activity_status?.value ,
-      start_date: translatorFormValue.start_date.value,
-      image_url: translatorFormValue.image_url?.value ,
+      firstName: translatorFormValue.firstName.value,
+      lastName: translatorFormValue.lastName.value,
+      email: translatorFormValue.email.value,
+      password: translatorFormValue.password.value,
+      bio: translatorFormValue.bio.value,
+      role: translatorFormValue.role?.value,
+      telephone: translatorFormValue.telephone.value,
+      startDate: translatorFormValue.startDate.value,
+      imageUrl: translatorFormValue.imageUrl?.value,
       address: translatorFormValue.address?.value
     }
     const apiUrl = 'api/translator';
@@ -81,7 +81,7 @@ export class TranslatorCreateComponent {
           const config: ModalOptions = {
             initialState: {
               modalHeaderText: 'Success Message',
-              modalBodyText: `Owner: ${translator.first_name} created successfully`,
+              modalBodyText: `Owner: ${translator.firstName} created successfully`,
               okButtonText: 'OK'
             }
           };

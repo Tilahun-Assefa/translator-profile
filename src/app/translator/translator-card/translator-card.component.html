@@ -1,7 +1,7 @@
 <article class="profile-card">
   <p class="profile-headline"> Meet <span class="profile-name">{{translator.firstName}}</span></p>
   <p class="profile-description"><span class="profile-name"></span>{{translator.address}}</p>
-  <p class="profile-description"><span class="profile-name"></span>{{translator.dateOfStart | date:'dd/MM/yyyy'}}</p>
+  <p class="profile-description"><span class="profile-name"></span>{{translator.startDate | date:'dd/MM/yyyy'}}</p>
   <h3>
     <a [title]="translator.firstName + ' details'" [routerLink]="['/translator/details', translator.id]">
       {{ translator.firstName }}Details

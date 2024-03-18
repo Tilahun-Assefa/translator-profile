@@ -2,11 +2,12 @@ import { TranslationOrder } from "./translation-order";
 
 export interface User {
   id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  telephone: string;
-  address: string;
-  role:string;
+  firstName: string | null;
+  lastName: string | null;
+  email: string | null;
+  password: string|null;
+  telephone: string | null;
+  address?: string | null;
+  role?:string | null;
   translationOrders: TranslationOrder[];
 }

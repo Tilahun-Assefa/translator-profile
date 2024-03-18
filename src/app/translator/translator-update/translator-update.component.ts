@@ -5,10 +5,11 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { Translator } from 'src/app/_interfaces/translator';
-import { TranslatorUpdateForm } from 'src/app/_interfaces/translator-update-form';
+import { TranslatorUpdateForm } from 'src/app/_interfaces/form/translator-update-form';
 import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/success-modal.component';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { TranslatorRepositoryService } from 'src/app/shared/services/translator-repository.service';
+import { TranslatorUpdateDto } from 'src/app/_interfaces/dto/translator-update-dto';
 
 @Component({
   selector: 'app-translator-update',
@@ -30,18 +31,18 @@ export class TranslatorUpdateComponent {
 
   ngOnInit(): void {
     this.translatorUpdateForm = this.fb.group<TranslatorUpdateForm>({
-      first_name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      last_name: new FormControl('', Validators.required),
+      firstName: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      lastName: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
-      verify_password: new FormControl('', Validators.required),
+      verifyPassword: new FormControl('', Validators.required),
       telephone: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
       bio: new FormControl(''),
-      start_date: new FormControl(new Date(), Validators.required),
-      activity_status: new FormControl(true, Validators.required),
+      startDate: new FormControl(new Date(), Validators.required),
+      activityStatus: new FormControl(true, Validators.required),
       role: new FormControl('', Validators.required),
-      image_url: new FormControl('', Validators.required),
+      imageUrl: new FormControl('', Validators.required),
     });
 
     this.getTranslatorById();
@@ -56,7 +57,7 @@ export class TranslatorUpdateComponent {
         next: (trans: Translator) => {
           this.translator = {
             ...trans,
-            start_date: trans.start_date
+            startDate: trans.startDate
           };
           this.translatorUpdateForm.patchValue(this.translator);
         },
@@ -84,16 +85,17 @@ export class TranslatorUpdateComponent {
   }
 
   private executeOwnerUpdate = (translatorUpdateFormValue: TranslatorUpdateForm) => {
-    const translatorForUpd: Translator = {
+    const translatorForUpd: TranslatorUpdateDto = {
       id: this.translator.id,
-      first_name: translatorUpdateFormValue.first_name.value ,
-      last_name: translatorUpdateFormValue.last_name.value ,
+      firstName: translatorUpdateFormValue.firstName.value ,
+      lastName: translatorUpdateFormValue.lastName.value ,
       email: translatorUpdateFormValue.email.value ,
       password: translatorUpdateFormValue.password.value ,
+      telephone: translatorUpdateFormValue.telephone.value,
       bio: translatorUpdateFormValue.bio.value ,
-      activity_status: translatorUpdateFormValue.activity_status?.value ,
-      start_date: translatorUpdateFormValue.start_date.value,
-      image_url: translatorUpdateFormValue.image_url?.value ,
+      activityStatus: translatorUpdateFormValue.activityStatus?.value ,
+      startDate: translatorUpdateFormValue.startDate.value,
+      imageUrl: translatorUpdateFormValue.imageUrl?.value ,
       address: translatorUpdateFormValue.address?.value
     }
 

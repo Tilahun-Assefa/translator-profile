@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule, F
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { NgClass } from '@angular/common';
-import { UserLoginForm } from '../_interfaces/user-login-form';
+import { UserLoginForm } from '../_interfaces/form/user-login-form';
 
 @Component({
   selector: 'dl-login',

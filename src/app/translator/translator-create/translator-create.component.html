@@ -4,13 +4,13 @@
     <div class="card card-body bg-light mb-2 mt-2">
       <div class="row mb-3">
         <label for="first_name" class="col-form-label col-md-2">First Name: </label>
-        <input type="text" id="first_name" formControlName="first_name" class="form-control" placeholder="First Name">
+        <input type="text" id="first_name" formControlName="firstName" class="form-control" placeholder="First Name">
 
       </div>
 
       <div class="form-field">
         <label for="last_name" class="col-form-label col-md-2">Last Name: </label>
-        <input type="text" id="last_name" formControlName="last_name" class="form-control" placeholder="Last Name">
+        <input type="text" id="last_name" formControlName="lastName" class="form-control" placeholder="Last Name">
       </div>
 
       <div class="mb-3 row">
@@ -28,40 +28,23 @@
       <div class="mb-3 row">
         <label for="startdate" class="col-form-label col-md-2">Start Date: </label>
         <div class="col-md-5">
-          <input type="text" formControlName="startdate" id="startdate" class="form-control" readonly bsDatepicker />
+          <input type="text" formControlName="startDate" id="startdate" class="form-control" readonly bsDatepicker />
         </div>
         <div class="col-md-5">
-          @if (validateControl('startdate')&& hasError('startdate', 'required')) {
-          <em>Date of birth is required</em>
+          @if (validateControl('startDate')&& hasError('startDate', 'required')) {
+          <em>Date of start is required</em>
           }
         </div>
-      </div>
-
-      <div class="mb-3 row">
-        <label for="startdate" class="col-form-label col-md-2">Start Date: </label>
-        <div class="col-md-5">
-          <input type="text" formControlName="startdate" id="startdate" class="form-control" readonly bsDatepicker />
-        </div>
-        <div class="col-md-5">
-          @if (validateControl('startdate')&& hasError('startdate', 'required')) {
-          <em>Date of birth is required</em>
-          }
-        </div>
-      </div>
+      </div>    
 
       <div class="form-field">
-        <label for="email" class="col-form-label col-md-2">Email: </label>
-        <input type="email" id="email" formControlName="email" class="form-control" placeholder="Email">
-      </div>
-
-      <div class="form-field">
-        <label for="last_name" class="col-form-label col-md-2">Password: </label>
-        <input type="password" formControlName="password" class="form-control" placeholder="Password">
+        <label for="password" class="col-form-label col-md-2">Password: </label>
+        <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password">
       </div>
 
       <div form-field>
         <label class="col-form-label col-md-2">Choose a role...</label>
-        <select formControlName="selectedRole">
+        <select formControlName="role">
           <option disabled value="">--select a role--</option>
           @for (role of roles; track $index) {
           <option [value]="role">{{role}} </option>
@@ -71,7 +54,7 @@
 
       <div class="form-field">
         <label for="image" class="col-form-label col-md-2">Load Photo: </label>
-        <input type="file" id="image" formControlName="img_url" class="form-control" placeholder="Picture">
+        <input type="file" id="image" formControlName="imageUrl" class="form-control" placeholder="Picture">
       </div>
 
       <div class="mb-3 row">
