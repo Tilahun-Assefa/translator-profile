@@ -10,7 +10,9 @@ import { BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 export class ErrorHandlerService {
 
   public errorMessage: string = '';
-  constructor(private router: Router, private modal: BsModalService) { }
+  constructor(private router: Router,
+    // private modal: BsModalService
+    ) { }
   public handleError = (error: HttpErrorResponse) => {
     if (error.status === 500) {
       this.handle500Error(error);
@@ -41,7 +43,7 @@ export class ErrorHandlerService {
         okButtonText: 'OK'
       }
     };
-    this.modal.show(ErrorModalComponent, config);
+    // this.modal.show(ErrorModalComponent, config);
   }
 
   private createErrorMessage = (error: HttpErrorResponse) => {

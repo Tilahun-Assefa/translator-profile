@@ -17,7 +17,9 @@ export class TranslatorListComponent {
   translators!: Translator[];
   errorMessage: string = '';
 
-  constructor(readonly translatorService: TranslatorRepositoryService, private errorHandler: ErrorHandlerService) { }
+  constructor(readonly translatorService: TranslatorRepositoryService,
+    private errorHandler: ErrorHandlerService
+    ) { }
 
   ngOnInit(): void {
     this.getAllTranslators();

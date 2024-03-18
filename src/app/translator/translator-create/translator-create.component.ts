@@ -14,7 +14,7 @@ import { TranslatorRepositoryService } from 'src/app/shared/services/translator-
 @Component({
   selector: 'app-translator-create',
   standalone: true,
-  imports: [ReactiveFormsModule, DatePipe],
+  imports: [ReactiveFormsModule],
   templateUrl: 'translator-create.component.html',
   styleUrls: ['translator-create.component.css']
 })

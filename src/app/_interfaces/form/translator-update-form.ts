@@ -1,9 +1,6 @@
 import { FormControl } from "@angular/forms";
-import { UserRegisterForm } from "./user-register-form";
+import { TranslatorCreateForm } from "./translator-create-form";
 
-export interface TranslatorUpdateForm extends UserRegisterForm{
-  bio: FormControl<string | null>;
+export interface TranslatorUpdateForm extends TranslatorCreateForm{
   activityStatus: FormControl<boolean | null>;
-  startDate: FormControl<Date | null>;
-  imageUrl?: FormControl<string | null>;
 }

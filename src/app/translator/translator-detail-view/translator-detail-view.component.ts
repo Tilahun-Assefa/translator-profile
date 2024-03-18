@@ -22,7 +22,9 @@ export class TranslatorDetailViewComponent {
   orders: TranslationOrder[] = [];
 
   constructor(private translatorRepository: TranslatorRepositoryService,
-    private route: ActivatedRoute, private errorHandler: ErrorHandlerService) { }
+    private route: ActivatedRoute,
+    private errorHandler: ErrorHandlerService
+    ) { }
 
   ngOnInit(): void {
     const id: string = this.route.snapshot.params['id'];
