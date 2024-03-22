@@ -1,5 +1,6 @@
 <div class="container-fluid">
-  <form [formGroup]="translatorUpdateForm" autocomplete="off" novalidate (ngSubmit)="updateTranslator(translatorUpdateForm.value)">
+  <form [formGroup]="translatorUpdateForm" autocomplete="off" novalidate
+    (ngSubmit)="updateTranslator(translatorUpdateForm.value)">
     <div class="card card-body bg-light mb-2 mt-2">
       <div class="row mb-3">
         <label for="name" class="col-form-label col-md-2">First Name: </label>
@@ -12,9 +13,11 @@
             characters.</em>}
         </div>
       </div>
-      <div class="form-field">
+      <div class="row mb-3">
         <label for="lastLame" class="col-form-label col-md-2">Last Name: </label>
-        <input type="text" id="lastLame" formControlName="lastName" class="form-control" placeholder="Last Name">
+        <div class="col-md-5">
+          <input type="text" id="lastLame" formControlName="lastName" class="form-control" placeholder="Last Name">
+        </div>
       </div>
 
       <div class="mb-3 row">
