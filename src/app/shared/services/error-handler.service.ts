@@ -11,7 +11,7 @@ export class ErrorHandlerService {
 
   public errorMessage: string = '';
   constructor(private router: Router,
-    // private modal: BsModalService
+    private modal: BsModalService
     ) { }
   public handleError = (error: HttpErrorResponse) => {
     if (error.status === 500) {
@@ -43,7 +43,7 @@ export class ErrorHandlerService {
         okButtonText: 'OK'
       }
     };
-    // this.modal.show(ErrorModalComponent, config);
+    this.modal.show(ErrorModalComponent, config);
   }
 
   private createErrorMessage = (error: HttpErrorResponse) => {

@@ -62,20 +62,21 @@ export class TranslatorCreateComponent {
   }
 
   private executeTranslatorCreation = (translatorFormValue: TranslatorCreateForm) => {
-    const translator: TranslatorCreateDto = {
-      firstName: translatorFormValue.firstName.value,
-      lastName: translatorFormValue.lastName.value,
-      email: translatorFormValue.email.value,
-      password: translatorFormValue.password.value,
-      bio: translatorFormValue.bio.value,
-      role: translatorFormValue.role?.value,
-      telephone: translatorFormValue.telephone.value,
-      startDate: translatorFormValue.startDate.value,
-      imageUrl: translatorFormValue.imageUrl?.value,
-      address: translatorFormValue.address?.value
-    }
+    // const translator: TranslatorCreateDto = {
+    //   firstName : translatorFormValue.firstName,
+    //   lastName: translatorFormValue.lastName,
+    //   email: translatorFormValue.email.value,
+    //   password: translatorFormValue.password,
+    //   bio: translatorFormValue.bio,
+    //   role: translatorFormValue.role,
+    //   telephone: translatorFormValue.telephone,
+    //   startDate: translatorFormValue.startDate,
+    //   imageUrl: translatorFormValue.imageUrl,
+    //   address: translatorFormValue.address
+    // }
+
     const apiUrl = 'api/translator';
-    this.repository.createTranslator(apiUrl, translator)
+    this.repository.createTranslator(apiUrl, this.translatorCreateForm.value)
       .subscribe({
         next: (translator: Translator) => {
           const config: ModalOptions = {

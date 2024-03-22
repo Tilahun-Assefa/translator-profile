@@ -85,23 +85,23 @@ export class TranslatorUpdateComponent {
   }
 
   private executeOwnerUpdate = (translatorUpdateFormValue: TranslatorUpdateForm) => {
-    const translatorForUpd: TranslatorUpdateDto = {
-      id: this.translator.id,
-      firstName: translatorUpdateFormValue.firstName.value ,
-      lastName: translatorUpdateFormValue.lastName.value ,
-      email: translatorUpdateFormValue.email.value ,
-      password: translatorUpdateFormValue.password.value ,
-      telephone: translatorUpdateFormValue.telephone.value,
-      bio: translatorUpdateFormValue.bio.value ,
-      activityStatus: translatorUpdateFormValue.activityStatus?.value ,
-      startDate: translatorUpdateFormValue.startDate.value,
-      imageUrl: translatorUpdateFormValue.imageUrl?.value ,
-      address: translatorUpdateFormValue.address?.value
-    }
+    // const translatorForUpd: TranslatorUpdateDto = {
+    //   id: this.translator.id,
+    //   firstName: translatorUpdateFormValue.firstName.value ,
+    //   lastName: translatorUpdateFormValue.lastName.value ,
+    //   email: translatorUpdateFormValue.email.value ,
+    //   password: translatorUpdateFormValue.password.value ,
+    //   telephone: translatorUpdateFormValue.telephone.value,
+    //   bio: translatorUpdateFormValue.bio.value ,
+    //   activityStatus: translatorUpdateFormValue.activityStatus?.value ,
+    //   startDate: translatorUpdateFormValue.startDate.value,
+    //   imageUrl: translatorUpdateFormValue.imageUrl?.value ,
+    //   address: translatorUpdateFormValue.address?.value
+    // }
 
     const apiUri: string = `api/translator/${this.translator?.id}`;
 
-    this.repository.updateTranslator(apiUri, translatorForUpd)
+    this.repository.updateTranslator(apiUri, this.translatorUpdateForm.value)
       .subscribe({
         next: (_) => {
           const config: ModalOptions = {

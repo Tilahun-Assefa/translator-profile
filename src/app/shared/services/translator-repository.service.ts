@@ -21,11 +21,11 @@ export class TranslatorRepositoryService {
     return this.http.get<Translator>(this.createCompleteRoute(route, this.envUrl.urlAddress));
   }
 
-  public createTranslator = (route: string, translator: TranslatorCreateDto) => {
+  public createTranslator = (route: string, translator: any) => {
     return this.http.post<Translator>(this.createCompleteRoute(route, this.envUrl.urlAddress), translator, this.generateHeaders());
   }
 
-  public updateTranslator = (route: string, translator: TranslatorUpdateDto) => {
+  public updateTranslator = (route: string, translator: any) => {
     return this.http.put(this.createCompleteRoute(route, this.envUrl.urlAddress), translator, this.generateHeaders());
   }
   public deleteTranslator = (route: string) => {
