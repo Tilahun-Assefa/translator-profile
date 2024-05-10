@@ -5,7 +5,6 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { Translator } from 'src/app/_interfaces/translator';
-import { TranslatorCreateDto } from 'src/app/_interfaces/dto/translator-create-dto';
 import { TranslatorCreateForm } from 'src/app/_interfaces/form/translator-create-form';
 import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/success-modal.component';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
@@ -62,19 +61,6 @@ export class TranslatorCreateComponent {
   }
 
   private executeTranslatorCreation = (translatorFormValue: TranslatorCreateForm) => {
-    // const translator: TranslatorCreateDto = {
-    //   firstName : translatorFormValue.firstName,
-    //   lastName: translatorFormValue.lastName,
-    //   email: translatorFormValue.email.value,
-    //   password: translatorFormValue.password,
-    //   bio: translatorFormValue.bio,
-    //   role: translatorFormValue.role,
-    //   telephone: translatorFormValue.telephone,
-    //   startDate: translatorFormValue.startDate,
-    //   imageUrl: translatorFormValue.imageUrl,
-    //   address: translatorFormValue.address
-    // }
-
     const apiUrl = 'api/translator';
     this.repository.createTranslator(apiUrl, this.translatorCreateForm.value)
       .subscribe({

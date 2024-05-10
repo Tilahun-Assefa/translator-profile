@@ -9,7 +9,6 @@ import { TranslatorUpdateForm } from 'src/app/_interfaces/form/translator-update
 import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/success-modal.component';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { TranslatorRepositoryService } from 'src/app/shared/services/translator-repository.service';
-import { TranslatorUpdateDto } from 'src/app/_interfaces/dto/translator-update-dto';
 
 @Component({
   selector: 'app-translator-update',
@@ -85,22 +84,8 @@ export class TranslatorUpdateComponent {
   }
 
   private executeOwnerUpdate = (translatorUpdateFormValue: TranslatorUpdateForm) => {
-    // const translatorForUpd: TranslatorUpdateDto = {
-    //   id: this.translator.id,
-    //   firstName: translatorUpdateFormValue.firstName.value ,
-    //   lastName: translatorUpdateFormValue.lastName.value ,
-    //   email: translatorUpdateFormValue.email.value ,
-    //   password: translatorUpdateFormValue.password.value ,
-    //   telephone: translatorUpdateFormValue.telephone.value,
-    //   bio: translatorUpdateFormValue.bio.value ,
-    //   activityStatus: translatorUpdateFormValue.activityStatus?.value ,
-    //   startDate: translatorUpdateFormValue.startDate.value,
-    //   imageUrl: translatorUpdateFormValue.imageUrl?.value ,
-    //   address: translatorUpdateFormValue.address?.value
-    // }
 
     const apiUri: string = `api/translator/${this.translator?.id}`;
-
     this.repository.updateTranslator(apiUri, this.translatorUpdateForm.value)
       .subscribe({
         next: (_) => {
