@@ -26,7 +26,7 @@ export class TranslatorListComponent {
   }
 
   private getAllTranslators = () => {
-    const apiAddress: string = 'api/translator';
+    const apiAddress: string = 'api/auth';
     this.translatorService.getTranslators(apiAddress)
       .subscribe({
         next: (result: Translator[]) => this.translators = result,

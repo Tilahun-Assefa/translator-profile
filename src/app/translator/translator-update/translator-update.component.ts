@@ -80,34 +80,21 @@ export class TranslatorUpdateComponent {
   }
 
   public updateTranslator = (translatorUpdateFormValue: any) => {
-    if (this.translatorUpdateForm.valid){
-      this.executeOwnerUpdate(translatorUpdateFormValue);}
+    if (this.translatorUpdateForm.valid) {
+      this.executeTranslatorUpdate(translatorUpdateFormValue);
+    }
   }
 
-  private executeOwnerUpdate = (translatorUpdateFormValue: TranslatorUpdateForm) => {
-    // const translatorForUpd: TranslatorUpdateDto = {
-    //   id: this.translator.id,
-    //   firstName: translatorUpdateFormValue.firstName.value ,
-    //   lastName: translatorUpdateFormValue.lastName.value ,
-    //   email: translatorUpdateFormValue.email.value ,
-    //   password: translatorUpdateFormValue.password.value ,
-    //   telephone: translatorUpdateFormValue.telephone.value,
-    //   bio: translatorUpdateFormValue.bio.value ,
-    //   activityStatus: translatorUpdateFormValue.activityStatus?.value ,
-    //   startDate: translatorUpdateFormValue.startDate.value,
-    //   imageUrl: translatorUpdateFormValue.imageUrl?.value ,
-    //   address: translatorUpdateFormValue.address?.value
-    // }
-
+  private executeTranslatorUpdate = (translatorUpdateFormValue: TranslatorUpdateForm) => {
     const apiUri: string = `api/translator/${this.translator?.id}`;
 
-    this.repository.updateTranslator(apiUri, this.translatorUpdateForm.value)
+    this.repository.updateTranslator(apiUri, translatorUpdateFormValue)
       .subscribe({
         next: (_) => {
           const config: ModalOptions = {
             initialState: {
               modalHeaderText: 'Success Message',
-              modalBodyText: 'Owner updated successfully',
+              modalBodyText: 'Translator profile updated successfully',
               okButtonText: 'OK'
             }
           };

@@ -75,7 +75,7 @@ export class TranslatorCreateComponent {
     //   address: translatorFormValue.address
     // }
 
-    const apiUrl = 'api/translator';
+    const apiUrl = 'api/auth';
     this.repository.createTranslator(apiUrl, this.translatorCreateForm.value)
       .subscribe({
         next: (translator: Translator) => {
