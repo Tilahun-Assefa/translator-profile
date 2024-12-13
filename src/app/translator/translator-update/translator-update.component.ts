@@ -5,11 +5,10 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { Translator } from 'src/app/_interfaces/translator';
-import { TranslatorUpdateForm } from 'src/app/_interfaces/form/translator-update-form';
 import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/success-modal.component';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { TranslatorRepositoryService } from 'src/app/shared/services/translator-repository.service';
-import { TranslatorUpdateDto } from 'src/app/_interfaces/dto/translator-update-dto';
+import { TranslatorCreateForm } from 'src/app/_interfaces/form/translator-create-form';
 
 @Component({
   selector: 'app-translator-update',
@@ -21,7 +20,7 @@ import { TranslatorUpdateDto } from 'src/app/_interfaces/dto/translator-update-d
 export class TranslatorUpdateComponent {
   translator!: Translator;
   errorMessage: string = '';
-  translatorUpdateForm!: FormGroup<TranslatorUpdateForm>;
+  translatorUpdateForm!: FormGroup<TranslatorCreateForm>;
   bsModalRef?: BsModalRef;
   roles: string[] = ['Admin', 'Translator'];
 
@@ -30,7 +29,7 @@ export class TranslatorUpdateComponent {
     private modal: BsModalService) { }
 
   ngOnInit(): void {
-    this.translatorUpdateForm = this.fb.group<TranslatorUpdateForm>({
+    this.translatorUpdateForm = this.fb.group<TranslatorCreateForm>({
       firstName: new FormControl('', [Validators.required, Validators.minLength(3)]),
       lastName: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
@@ -40,7 +39,6 @@ export class TranslatorUpdateComponent {
       address: new FormControl('', Validators.required),
       bio: new FormControl(''),
       startDate: new FormControl(new Date(), Validators.required),
-      activityStatus: new FormControl(true, Validators.required),
       role: new FormControl('', Validators.required),
       imageUrl: new FormControl('', Validators.required),
     });
@@ -50,7 +48,7 @@ export class TranslatorUpdateComponent {
 
   private getTranslatorById = () => {
     const translatorId: string = this.activeRoute.snapshot.params['id'];
-    const translatorByIdUri: string = `api/translator/${translatorId}`;
+    const translatorByIdUri: string = `api/auth/${translatorId}`;
 
     this.repository.getOneTranslator(translatorByIdUri)
       .subscribe({
@@ -85,8 +83,8 @@ export class TranslatorUpdateComponent {
     }
   }
 
-  private executeTranslatorUpdate = (translatorUpdateFormValue: TranslatorUpdateForm) => {
-    const apiUri: string = `api/translator/${this.translator?.id}`;
+  private executeTranslatorUpdate = (translatorUpdateFormValue: TranslatorCreateForm) => {
+    const apiUri: string = `api/auth/${this.translator?.id}`;
 
     this.repository.updateTranslator(apiUri, translatorUpdateFormValue)
       .subscribe({

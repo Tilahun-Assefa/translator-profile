@@ -1,25 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { Testimonial } from '../_interfaces/testimonial';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [],
-  template: `
-    <p class="homeText">{{homeText}}</p>
-  `,
-  styles: `.homeText{ 
-    font-size: 35px; 
-    color: red; 
-    text-align: center; 
-    position: relative; 
-    top:30px; 
-    text-shadow: 2px 2px 2px gray; 
-}`
+  templateUrl: "home.component.html",
+  styleUrls: ["home.component.css"]
 })
-export class HomeComponent implements OnInit{
-  public homeText: string | undefined;
-  constructor(){}
+export class HomeComponent implements OnInit {
+  public testimonial: Testimonial | undefined;
+  constructor() { }
   ngOnInit(): void {
-    this.homeText = "WELCOME TO WMkt Translation Service APPLICATION";
   }
 }

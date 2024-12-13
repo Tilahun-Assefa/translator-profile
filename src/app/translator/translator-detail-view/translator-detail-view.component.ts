@@ -31,7 +31,7 @@ export class TranslatorDetailViewComponent {
     this.getTranslatorDetails(id);
   }
   getTranslatorDetails = (id: string) => {
-    const apiUrl: string = `api/translator/${id}`;
+    const apiUrl: string = `api/auth/${id}`;
     this.translatorRepository.getOneTranslator(apiUrl)
       .subscribe({
         next: (result: Translator) => this.translator = result,

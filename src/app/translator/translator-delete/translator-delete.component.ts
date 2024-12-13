@@ -27,7 +27,7 @@ export class TranslatorDeleteComponent implements OnInit {
 
   private getTranslatorById = () => {
     const translatorId: string = this.activeRoute.snapshot.params['id'];
-    const apiUri: string = `api/translator/${translatorId}`;
+    const apiUri: string = `api/auth/${translatorId}`;
 
     this.repository.getOneTranslator(apiUri)
       .subscribe({
@@ -41,7 +41,7 @@ export class TranslatorDeleteComponent implements OnInit {
   }
 
   deleteTranslator = () => {
-    const deleteUri: string = `api/translator/${this.translator.id}`;
+    const deleteUri: string = `api/auth/${this.translator.id}`;
 
     this.repository.deleteTranslator(deleteUri)
       .subscribe({

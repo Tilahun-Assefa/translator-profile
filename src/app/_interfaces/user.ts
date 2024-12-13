@@ -1,5 +1,3 @@
-import { TranslationOrder } from "./translation-order";
-
 export interface User {
   id: string;
   firstName: string | null;
@@ -9,5 +7,4 @@ export interface User {
   telephone: string | null;
   address?: string | null;
   role?:string | null;
-  translationOrders: TranslationOrder[];
 }

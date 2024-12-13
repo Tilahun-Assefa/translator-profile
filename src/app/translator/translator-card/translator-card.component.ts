@@ -17,12 +17,12 @@ export class TranslatorCardComponent {
   constructor(private router: Router) { }
 
   public redirectToUpdatePage = (id: string) => {
-    const updateUrl: string = `/auth/update/${id}`;
+    const updateUrl: string = `/translator/update/${id}`;
     this.router.navigate([updateUrl]);
   }
 
   public redirectToDeletePage = (id: string) => {
-    const deleteUrl: string = `/auth/delete/${id}`;
+    const deleteUrl: string = `/translator/delete/${id}`;
     this.router.navigate([deleteUrl]);
   }
 }

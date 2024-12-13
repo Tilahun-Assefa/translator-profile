@@ -19,7 +19,7 @@
   </div>
 </div>
 @if((orders.length <= 2)){ <div class="row">
-  <div class="col-md-3">    <strong>Translator status:</strong>  </div>
+  <div class="col-md-3"> <strong>Translator status:</strong> </div>
   <div class="col-md-3">
     <span [appAppend]="translator" class="text-success">Beginner Translator</span>
   </div>
@@ -27,9 +27,9 @@
     <div class="col-md-3">
       <strong>Translator status:</strong>
     </div>
-    <div class="col-md-3">      <span class="text-info">Advanced Translator.</span>    </div>
+    <div class="col-md-3"> <span class="text-info">Advanced Translator.</span> </div>
   </div>}
-  <app-translation-orders [orders]="translator.translationOrders" (onOrderClick)="printToConsole($event)" />
+  <app-translation-orders [orders]="orders" (onOrderClick)="printToConsole($event)" />
   }
 
   <h2>{{errorMessage}}</h2>

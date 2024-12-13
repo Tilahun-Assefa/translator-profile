@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { EnvironmentUrlService } from './environment-url.service';
 import { Translator } from 'src/app/_interfaces/translator';
 import { Observable } from 'rxjs';
-import { TranslatorCreateDto } from 'src/app/_interfaces/dto/translator-create-dto';
-import { TranslatorUpdateDto } from 'src/app/_interfaces/dto/translator-update-dto';
 
 @Injectable({
   providedIn: 'root'
