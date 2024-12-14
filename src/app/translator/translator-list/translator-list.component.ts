@@ -7,11 +7,10 @@ import { TranslatorRepositoryService } from 'src/app/shared/services/translator-
 import { TranslatorCardComponent } from 'src/app/translator/translator-card/translator-card.component'
 
 @Component({
-  selector: 'app-translator-list',
-  standalone: true,
-  templateUrl: 'translator-list.component.html',
-  styleUrls: ['translator-list.component.css'],
-  imports: [TranslatorCardComponent, RouterLink]
+    selector: 'app-translator-list',
+    templateUrl: 'translator-list.component.html',
+    styleUrls: ['translator-list.component.css'],
+    imports: [TranslatorCardComponent, RouterLink]
 })
 export class TranslatorListComponent {
   translators!: Translator[];

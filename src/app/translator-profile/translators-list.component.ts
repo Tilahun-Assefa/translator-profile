@@ -4,11 +4,10 @@ import { ProfileService } from './profile.service';
 import { TranslatorListCardComponent } from './translator-list-card/translator-list-card.component';
 
 @Component({
-  selector: 'app-translators-list',
-  standalone: true,
-  imports: [TranslatorListCardComponent],
-  templateUrl: 'translators-list.component.html',
-  styleUrls: ['translators-list.component.css']
+    selector: 'app-translators-list',
+    imports: [TranslatorListCardComponent],
+    templateUrl: 'translators-list.component.html',
+    styleUrls: ['translators-list.component.css']
 })
 export class TranslatorsListComponent {
 

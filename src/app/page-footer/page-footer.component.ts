@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-page-footer',
-  standalone: true,
-  imports: [],
-  template: `
+    selector: 'app-page-footer',
+    imports: [],
+    template: `
     <footer class="py-2 bg-dark fixed-bottom">
     <ul class="container px-5">
         <li><p class="m-0 text-center text-white">Copyright &copy; Translation Hub 2024</p></li>
@@ -12,7 +11,7 @@ import { Component } from '@angular/core';
     </ul>
 </footer>
   `,
-  styles: ``
+    styles: ``
 })
 export class PageFooterComponent {
 

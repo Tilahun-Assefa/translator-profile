@@ -12,11 +12,10 @@ import { ErrorHandlerService } from 'src/app/shared/services/error-handler.servi
 import { TranslatorRepositoryService } from 'src/app/shared/services/translator-repository.service';
 
 @Component({
-  selector: 'app-translator-create',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: 'translator-create.component.html',
-  styleUrls: ['translator-create.component.css']
+    selector: 'app-translator-create',
+    imports: [ReactiveFormsModule],
+    templateUrl: 'translator-create.component.html',
+    styleUrls: ['translator-create.component.css']
 })
 export class TranslatorCreateComponent {
   errorMessage: string = '';

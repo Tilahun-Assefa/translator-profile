@@ -9,11 +9,10 @@ import { ErrorHandlerService } from 'src/app/shared/services/error-handler.servi
 import { TranslatorRepositoryService } from 'src/app/shared/services/translator-repository.service';
 
 @Component({
-  selector: 'app-translator-delete',
-  standalone: true,
-  imports: [DatePipe],
-  templateUrl: 'translator-delete.component.html',
-  styleUrls: ['translator-delete.component.css']
+    selector: 'app-translator-delete',
+    imports: [DatePipe],
+    templateUrl: 'translator-delete.component.html',
+    styleUrls: ['translator-delete.component.css']
 })
 export class TranslatorDeleteComponent implements OnInit {
   translator!: Translator;

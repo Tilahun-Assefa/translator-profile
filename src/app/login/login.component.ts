@@ -6,11 +6,10 @@ import { NgClass } from '@angular/common';
 import { UserLoginForm } from '../_interfaces/form/user-login-form';
 
 @Component({
-  selector: 'dl-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, NgClass]
+    selector: 'dl-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css'],
+    imports: [FormsModule, ReactiveFormsModule, NgClass]
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup<UserLoginForm>;

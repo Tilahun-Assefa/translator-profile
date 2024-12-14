@@ -5,11 +5,10 @@ import { UserRegisterForm } from 'src/app/_interfaces/form/user-register-form';
 import { User } from 'src/app/_interfaces/user';
 
 @Component({
-  selector: 'dl-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
-  standalone: true,
-  imports: [ReactiveFormsModule]
+    selector: 'dl-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css'],
+    imports: [ReactiveFormsModule]
 })
 export class RegisterComponent implements OnInit {
 

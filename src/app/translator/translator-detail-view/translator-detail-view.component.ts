@@ -11,7 +11,6 @@ import { Translator } from 'src/app/_interfaces/translator';
 
 @Component({
     selector: 'app-translator-detail-view',
-    standalone: true,
     templateUrl: 'translator-detail-view.component.html',
     styleUrls: ['translator-detail-view.component.css'],
     imports: [CommonModule, TranslationOrdersComponent, AppendDirective]

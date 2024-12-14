@@ -5,9 +5,8 @@ import { PageFooterComponent } from './page-footer/page-footer.component';
 
 @Component({
     selector: 'app-root',
-    templateUrl:"app.component.html",
+    templateUrl: "app.component.html",
     styles: [],
-    standalone: true,
     imports: [TopBarComponent, RouterOutlet, PageFooterComponent]
 })
 export class AppComponent {

@@ -5,11 +5,10 @@ import { RouterModule } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-cart',
-  standalone: true,
-  imports: [CommonModule, RouterModule, ReactiveFormsModule],
-  templateUrl: 'cart.component.html',
-  styleUrls: ['cart.component.css']
+    selector: 'app-cart',
+    imports: [CommonModule, RouterModule, ReactiveFormsModule],
+    templateUrl: 'cart.component.html',
+    styleUrls: ['cart.component.css']
 })
 export class CartComponent {
 

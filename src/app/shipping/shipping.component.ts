@@ -5,11 +5,10 @@ import { Observable } from 'rxjs';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-shipping',
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
-  templateUrl: './shipping.component.html',
-  styleUrls: ['./shipping.component.css']
+    selector: 'app-shipping',
+    imports: [CommonModule, FormsModule, ReactiveFormsModule],
+    templateUrl: './shipping.component.html',
+    styleUrls: ['./shipping.component.css']
 })
 export class ShippingComponent {
 

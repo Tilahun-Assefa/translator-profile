@@ -3,11 +3,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslationOrder } from 'src/app/_interfaces/translation-order';
 
 @Component({
-  selector: 'app-translation-orders',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: 'translation-orders.component.html',
-  styleUrls: ['translation-orders.component.css']
+    selector: 'app-translation-orders',
+    imports: [CommonModule],
+    templateUrl: 'translation-orders.component.html',
+    styleUrls: ['translation-orders.component.css']
 })
 export class TranslationOrdersComponent implements OnInit {
   @Input() orders: TranslationOrder[] | undefined;

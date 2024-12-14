@@ -6,11 +6,10 @@ import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../cart/cart.service';
 
 @Component({
-  selector: 'app-translator-profile-view',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: 'translator-profile-view.component.html',
-  styleUrls: ['translator-profile-view.component.css']
+    selector: 'app-translator-profile-view',
+    imports: [CommonModule],
+    templateUrl: 'translator-profile-view.component.html',
+    styleUrls: ['translator-profile-view.component.css']
 })
 export class TranslatorProfileViewComponent implements OnInit {
 

@@ -11,11 +11,10 @@ import { TranslatorRepositoryService } from 'src/app/shared/services/translator-
 import { TranslatorCreateForm } from 'src/app/_interfaces/form/translator-create-form';
 
 @Component({
-  selector: 'app-translator-update',
-  standalone: true,
-  imports: [ReactiveFormsModule, DatePipe],
-  templateUrl: 'translator-update.component.html',
-  styleUrls: ['translator-update.component.css']
+    selector: 'app-translator-update',
+    imports: [ReactiveFormsModule, DatePipe],
+    templateUrl: 'translator-update.component.html',
+    styleUrls: ['translator-update.component.css']
 })
 export class TranslatorUpdateComponent {
   translator!: Translator;

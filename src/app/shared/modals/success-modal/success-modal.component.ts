@@ -2,11 +2,10 @@ import { Component, EventEmitter, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-success-modal',
-  standalone: true,
-  imports: [],
-  templateUrl: 'success-modal.component.html',
-  styleUrls: ['success-modal.component.css']
+    selector: 'app-success-modal',
+    imports: [],
+    templateUrl: 'success-modal.component.html',
+    styleUrls: ['success-modal.component.css']
 })
 export class SuccessModalComponent implements OnInit {
   modalHeaderText: string | undefined;

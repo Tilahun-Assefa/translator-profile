@@ -3,11 +3,10 @@ import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-pokemon',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: 'pokemon.component.html',
-  styleUrls: ['pokemon.component.css']
+    selector: 'app-pokemon',
+    imports: [ReactiveFormsModule],
+    templateUrl: 'pokemon.component.html',
+    styleUrls: ['pokemon.component.css']
 })
 export class PokemonComponent {
   i: number = 0;
