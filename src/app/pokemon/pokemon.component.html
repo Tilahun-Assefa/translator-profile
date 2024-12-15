@@ -1,7 +1,7 @@
 <div class="main-container">
     <select [formControl]="selectedPokemon">
-        <option disabled value="">--select a pokemon--</option>
-        @for (pokemon of pokemonArr; track $index) {
+        <option disabled value="undefined" selected>--select a pokemon--</option>
+        @for (pokemon of pokemonArr; track pokemon) {
         <option [ngValue]="pokemon"> {{ pokemon.name }} </option>
         }
     </select>

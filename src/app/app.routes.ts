@@ -8,7 +8,6 @@ import { InternalServerComponent } from './error-pages/internal-server/internal-
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'auth', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
-  { path: 'translator', loadChildren: () => import('./translator/translator.module').then(m => m.TranslatorModule) },
   { path: 'list', component: TranslatorsListComponent, canActivate: [canActivate] },
   { path: 'details/:index', loadComponent: () => import('./translator-profile/translator-profile-view/translator-profile-view.component').then(m => m.TranslatorProfileViewComponent) },
   { path: 'cart', loadComponent: () => import('./cart/cart.component').then(m => m.CartComponent) },
