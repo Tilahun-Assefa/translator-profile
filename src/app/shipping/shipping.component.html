@@ -16,7 +16,7 @@
   <h1>Select Quantity</h1>
   <label for="quantity">Quantity: </label>
   <select [ngModel]="quantity()" (change)="onChangeSelectedQuantity($any($event.target).value)">
-    <option disabled value="">--select a quantity--</option>
+    <option disabled selected value="">--select a quantity--</option>
     @for (q of qtyAvailable(); track $index) {
     <option [value]="q">{{q}}</option>
     }

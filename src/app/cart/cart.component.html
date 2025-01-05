@@ -5,13 +5,17 @@
       <a routerLink="/shipping">Shipping Prices</a>
     </p>
   </header>
-  @for (translator of translators; track $index) {
-  <div class="cart-card">
-    <span>{{ translator.name }}</span>
-    <span>{{ translator.price_hour | currency }}</span>
+  @for (line of orderLines(); track $index) {
+  <div class="cart-item">
+    <span>{{ line.product?.name }}</span>
+    <span>{{ line.qty }}</span>
   </div>
   }
 
+  <div>
+    <p>Items Count {{itemsCount()}}</p>
+    <p>Total Cost {{totalCost() | currency}}</p>
+  </div>
 
   <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" class="cart-form">
     <div class="cart-form-row">

@@ -1,0 +1,41 @@
+<form novalidate [formGroup]="addJobForm" (ngSubmit)="onSubmit()" class="cart-form">
+    <div class="cart-form-row">
+        <label for="date"> Date </label>
+        <input id="name" type="date" formControlName="date">
+    </div>
+
+    <div class="cart-form-row">
+        <label for="part_no"> PartNumber </label>
+        <input id="part_no" type="text" formControlName="partNumber">
+    </div>
+
+    <div class="cart-form-row">
+        <label for="qty"> Quantity </label>
+        <input id="qty" type="number" formControlName="quantity">
+    </div>
+
+    <div class="cart-form-row">
+        <label for="start_time"> StartTime </label>
+        <input id="start_time" type="datetime-local" formControlName="startTime" min="06:00" max="14:20" required>
+    </div>
+
+    <div class="cart-form-row">
+        <label for="finish_time"> FinishTime </label>
+        <input id="finish_time" type="datetime-local" formControlName="finishTime" min="06:00" max="14:20" required>
+    </div>
+
+    <div class="cart-form-row">
+        <label for="pack_code"> PackCode </label>
+        <input id="pack_code" type="text" formControlName="packCode">
+    </div>
+    <div class="cart-form-row">
+        <label for="pack_qty"> No of Pieces in Pack </label>
+        <input id="pack_qty" type="number" formControlName="packQty">
+    </div>
+    <div class="cart-form-row">
+        <button type="submit">Save</button>
+    </div>    
+</form>
+<div class="cart-form-row">
+    <button type="button" (click)="returnList()">Cancel</button>
+</div>

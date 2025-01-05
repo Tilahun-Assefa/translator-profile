@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ProfileService, Translator } from '../profile.service';
 import { Observable, map } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { CartService } from '../../cart/cart.service';
 
 @Component({
     selector: 'app-translator-profile-view',
@@ -16,7 +15,7 @@ export class TranslatorProfileViewComponent implements OnInit {
   translatorProfile$: Observable<Translator> | undefined;
   profile: any;
 
-  constructor(private profileService: ProfileService, private route: ActivatedRoute, private cartService: CartService) { }
+  constructor(private profileService: ProfileService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.translatorProfile$ = this.route.paramMap
@@ -28,7 +27,6 @@ export class TranslatorProfileViewComponent implements OnInit {
   }
 
   addToCart(translator: Translator) {
-    this.cartService.addToCart(translator);
     window.alert('Your product has been added to the cart!');
   }
 }

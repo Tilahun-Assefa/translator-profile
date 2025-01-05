@@ -44,7 +44,7 @@
         <select formControlName="selectedRole">
           <option disabled value="">--select a role--</option>
           @for (role of roles; track $index) {
-          <option [value]="role">{{role}} </option>
+          <option [ngValue]="role">{{role}} </option>
           }
         </select>
       </div>

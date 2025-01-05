@@ -1,0 +1,18 @@
+<h2>Product Sales</h2>
+<select [(ngModel)]="selectedProduct">
+    <option value="undefined" disabled selected>--select a product--</option>
+    @for (item of products(); track $index) {
+    <option [ngValue]="item">{{item.name}}</option>
+    }
+</select>
+<div>
+    Quantity: <input type="number" [(ngModel)]="quantity" />
+</div>
+
+<div>
+    Name: {{selectedProduct()?.name}}
+    <br>
+    Cost: {{selectedProduct()?.price}}
+</div>
+<div [style.color]="color()">Total: {{total()}}</div>
+<button type="button" (click)="addToCart(selectedProduct(), quantity())">Buy</button>

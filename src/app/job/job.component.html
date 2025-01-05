@@ -1,0 +1,21 @@
+<div>
+    <p>{{jobsCount()}}</p>
+    <p>{{jobSearchParameters()}}</p>
+</div>
+<button type="button" (click)="createJob()">Add Job</button>
+
+<div>
+    <label for="query">Query: </label>
+    <input type="text" id="query" [formControl]="queryCtl" (input)="search()">
+</div>
+
+@if (filteredJobs().length >0) {
+<section class="job-section">
+    <h2 class="profile-header">Job List</h2>
+    <article class="job-list">
+        @for (job of filteredJobs(); track i; let i=$index) {
+        <app-job-card [index]="i" [job]="job" />
+        }
+    </article>
+</section>
+}

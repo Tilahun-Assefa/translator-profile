@@ -1,4 +1,4 @@
-import { inject } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { CanActivateFn, ActivatedRouteSnapshot, RouterStateSnapshot, Router, UrlTree } from "@angular/router";
 import { map, catchError, of, Observable } from "rxjs";
 import { AuthService } from "./auth.service";
@@ -24,3 +24,21 @@ export const canActivate: CanActivateFn = (route: ActivatedRouteSnapshot,
   router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
   return false;
 };
+
+
+const canActivateTeam: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+  return inject(PermissionService).canActivate(inject(UserToken), route.params["id"]);
+}
+
+@Injectable()
+class UserToken { }
+
+@Injectable()
+class PermissionService {
+  canActivate(currentUser: UserToken, userId: string): boolean {
+    return true;
+  }
+  canMatch(currentUser: UserToken): boolean {
+    return true;
+  }
+}
