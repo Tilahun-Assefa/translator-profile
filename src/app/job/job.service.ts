@@ -23,16 +23,16 @@ export class JobService {
 
   // updatedJobs: WritableSignal<Job[]> = signal<Job[]>([]);
 
-  public find = (query: string, type: string) => {
-    const selectedJobs = computed(() => this.jobs().filter(j => j.partNumber?.includes(query)));
+  public find = (query: string, qType: string) => {
+    const selectedJobs = computed(() => this.jobs().filter(j => !query || j.partNumber?.includes(query)));
     return selectedJobs;
   }
   // public getJobs = (route: string): Observable<Job[]> => {
   //   return this.http.get<Job[]>(this.createCompleteRoute(route, this.urlAddress));
   // }
 
-  public getOneJob = (route: string): Observable<Job> => {
-    return this.http.get<Job>(this.createCompleteRoute(route, this.urlAddress));
+  public getOneJob = (route: string): Observable<JobResponse> => {
+    return this.http.get<JobResponse>(this.createCompleteRoute(route, this.urlAddress));
   }
 
   public createJob = (route: string, job: Job): void => {

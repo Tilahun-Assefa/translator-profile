@@ -1,3 +1,8 @@
+.container{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
 .job-section{
     display: flex;
     flex-direction: column;
@@ -16,4 +21,27 @@
     font-size: 36px;
     text-align: center;
     padding: 10px;
+}
+
+.button_1{
+    height: 38px;
+    background: #e8491d;
+    border: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 10px;
+    color:#ffffff;
+}
+
+#query{
+    padding: 15px;
+    color: #000;
+    background: #b4c7d3;
+}
+
+#query input[type="text"]{
+    padding: 4px;
+    height: 25px;
+    width: 250px;
+    background: #ffffff;
 }

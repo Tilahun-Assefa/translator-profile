@@ -8,7 +8,8 @@ import { JobCreateForm } from 'src/app/_interfaces/form/job-create-form';
 @Component({
   selector: 'app-add-job',
   imports: [ReactiveFormsModule],
-  templateUrl: 'add-job.component.html'
+  templateUrl: 'add-job.component.html',
+  styleUrls:['add-job.component.css']
 })
 export class AddJobComponent implements OnInit {
   fb = inject(FormBuilder);

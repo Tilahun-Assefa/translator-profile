@@ -14,12 +14,13 @@ export class ProductComponent {
   cartService = inject(CartService);
 
   products = this.productService.products;
-  selectedProduct = this.productService.selectedProduct ;
+  selectedProduct = this.productService.selectedProduct;
   quantity = this.productService.quantity;
   total = this.productService.total;
   color = this.productService.color;
-
-  addToCart(item: Product| undefined, qty: number) {
+  isLoading = this.productService.isLoading;
+  errorMessage = this.productService.errorMessage;
+  addToCart(item: Product | undefined, qty: number) {
     window.alert('Your product has been added to the cart!');
     this.cartService.addToOrder(item, qty);
   }

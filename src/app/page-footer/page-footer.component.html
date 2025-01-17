@@ -1,0 +1,19 @@
+<footer class="py-2 bg-dark fixed-bottom">
+
+    <ul class="container px-5 text-white text-center">
+        @if (isHydrated()) {
+        <div data-testid="hydrated">
+            <span>Application is ready</span>
+            @if (apiReachable() === 'connected') {
+            <strong>wifi</strong>
+            } @else {
+            <strong class="text-red-500">wifi_off</strong>
+            }
+        </div>
+        }
+        <li>
+            <p class="m-0  ">Copyright &copy; Translation Hub 2024</p>
+        </li>
+        <li><a style="float:right" href="/testimonial" class="nav-link">Give Feedback</a></li>
+    </ul>
+</footer>

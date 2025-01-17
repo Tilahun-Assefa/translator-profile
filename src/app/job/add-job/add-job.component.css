@@ -1,3 +1,51 @@
-input[type="number"] {
-    width: 100px;
-  }
+.container{
+  position: fixed;
+  left: 50%;
+  top: 10%;
+  height: 70%;
+  width: 800px;
+  transform: translate(-50%);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-size: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  opacity:1;
+  transition: all 0.7s;
+}
+
+.btn{
+  padding: 10px 20px;
+  margin: 20px;
+  width: 200px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: orangered;
+  border: none;
+  font-size: 20px ;
+}
+
+.btn:hover{
+  filter: brightness(0.8);
+}
+
+label{
+  color: blueviolet;
+  font-family: sans-serif;
+  margin: 10px;
+  font-size: 18px;
+}
+
+.input{
+  border: 2px solid;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.input::placeholder{
+  color: lightgrey;
+}

@@ -1,4 +1,9 @@
 <h2>Product Sales</h2>
+@if(isLoading()){
+    <div>...Loading products</div>
+}@else if(errorMessage()){
+<div style="color: red;">An error occured: {{errorMessage()}}</div>
+}@else {
 <select [(ngModel)]="selectedProduct">
     <option value="undefined" disabled selected>--select a product--</option>
     @for (item of products(); track $index) {
@@ -16,3 +21,4 @@
 </div>
 <div [style.color]="color()">Total: {{total()}}</div>
 <button type="button" (click)="addToCart(selectedProduct(), quantity())">Buy</button>
+}

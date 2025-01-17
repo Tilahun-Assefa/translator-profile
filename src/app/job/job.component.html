@@ -1,13 +1,27 @@
 <div>
     <p>{{jobsCount()}}</p>
     <p>{{jobSearchParameters()}}</p>
+    <p>Current Time: {{curTime()}}</p>
 </div>
-<button type="button" (click)="createJob()">Add Job</button>
-
-<div>
-    <label for="query">Query: </label>
-    <input type="text" id="query" [formControl]="queryCtl" (input)="search()">
-</div>
+<button type="button" class="button_1" (click)="createJob()">Add Job</button>
+<section id="query">
+    <div class="container">
+        <label for="query">Query: </label>
+        <input type="text" id="query" [formControl]="queryCtl" (input)="search()">
+    </div>
+    <fieldset>
+        <legend>Please select your preferred filter type:</legend>
+        <div>
+            <input type="radio" id="partnumber" [formControl]="typeCtl" value="partNumber" (change)="search()"
+                checked />
+            <label for="partnumber">Part Number</label>
+            <input type="radio" id="workdate" [formControl]="typeCtl" value="date" (change)="search()" />
+            <label for="workdate">Work Date</label>
+            <input type="radio" id="packcode" [formControl]="typeCtl" value="packCode" (change)="search()" />
+            <label for="packcode">Pack Code</label>
+        </div>
+    </fieldset>
+</section>
 
 @if (filteredJobs().length >0) {
 <section class="job-section">

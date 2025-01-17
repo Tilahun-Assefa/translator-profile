@@ -1,0 +1,10 @@
+<article>
+    <div>Messages</div>
+    @for (message of messages(); track message.sent) {
+    <div>
+        <p>chat</p>
+        <div>{{ message.text }}</div>
+        <div>{{ message.sent | date }}</div>
+    </div>
+    }
+</article>
