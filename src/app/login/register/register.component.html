@@ -1,0 +1,54 @@
+<div class="login-wrapper">
+  <div card class="box">
+    <h2>Register</h2>
+    <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-field">
+        <label for="first_name">First Name: </label>
+        <input type="text" id="first_name" formControlName="first_name" class="example-full-width" placeholder="First Name">
+
+      </div>
+
+      <div class="form-field">
+        <label for="last_name">Last Name: </label>
+        <input type="text" id="last_name" formControlName="last_name" class="example-full-width" placeholder="Last Name">
+      </div>
+
+      <div class="form-field">
+        <label for="email">Email: </label>
+        <input type="email" id="" formControlName="email" class="example-full-width" placeholder="Email">
+      </div>
+
+      <div class="form-field">
+        <label for="last_name">Password: </label>
+        <input type="password" formControlName="password" class="example-full-width" placeholder="Password">
+      </div>
+
+      <div class="form-field">
+        <label for="verify_password">Verify Password: </label>
+        <input type="password" formControlName="verify_password" class="example-full-width" placeholder="Verify Password">
+      </div>
+
+      <div class="form-field">
+        <label for="telephone">Phone No.: </label>
+        <input type="text" id="telephone" formControlName="telephone" class="example-full-width" placeholder="Phone No.">
+      </div>
+
+      <div class="form-field">
+        <label for="address"><Address></Address>: </label>
+        <input type="text" id="last_name" formControlName="address" class="example-full-width" placeholder="Address">
+      </div>
+
+      <div form-field>
+        <label class="example-full-width">Choose a role...</label>
+        <select formControlName="selectedRole">
+          <option disabled value="">--select a role--</option>
+          @for (role of roles; track $index) {
+          <option [ngValue]="role">{{role}} </option>
+          }
+        </select>
+      </div>
+
+      <button type="submit" [disabled]="!registerForm.valid" class="btn-block">Register</button>
+    </form>
+  </div>

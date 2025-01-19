@@ -31,3 +31,23 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 git checkout -b gh-pages
 ng build --output-path docs --base-href /translator-profile/
 git commit -m"build github pages to deploy"
+## step by step procedure of this application development
+## angular installation
+ng version
+npm uninstall -g @angular/cli
+npm cache clean --force
+ng new wmk-translation-service
+## add bootstrap and ngx bootsrap for styling
+ng add ngx-bootstrap
+ng g c home --skip-tests
+ng g c error-pages/not-found
+## generate environment files and services
+ng g environments
+ng g s shared/services/environment-url --skip-tests
+ng g s shared/services/translator-repository --skip-tests
+## angular error handling
+ng g c error-pages/internal-server --skip-tests
+ng g s shared/services/error-handler --skip-tests
+## angular lazy loading
+ng g m translator --routing=true
+ng g c translator/translator-list --skip-tests

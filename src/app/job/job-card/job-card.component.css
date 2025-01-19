@@ -1,0 +1,24 @@
+.job-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    width: 300px;
+  }
+  
+  .job-img {
+    border-radius: 10px 10px 0 0;
+    width: 300px;
+  }
+  
+  .job-description,
+  .job-headline,
+  .job-learn-more {
+    padding: 10px;
+  }
+  
+  .job-headline {
+    font-size: 14pt;
+    font-weight: bold;
+  }

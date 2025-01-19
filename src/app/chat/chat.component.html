@@ -1,0 +1,23 @@
+<article>
+    <div>Messages</div>
+    @for (message of messages(); track message.sent) {
+    <div>
+        <p>chat</p>
+        <div>{{ message.text }}</div>
+        <div>{{ message.sent | date }}</div>
+    </div>
+    }
+</article>
+
+@switch (chatService.status()) {
+@case ('failed') {
+<p class="">Could not establish connection.</p>
+}
+@case ('connected') {
+<p class="">Connection established</p>
+}
+}
+
+<div>
+    <button class="button button-primary" (click)="enableWebSocket()"> Enable Chat</button>
+</div>
