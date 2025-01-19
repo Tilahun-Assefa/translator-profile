@@ -2,8 +2,8 @@
   position: fixed;
   left: 50%;
   top: 10%;
-  height: 70%;
-  width: 800px;
+  height: 60%;
+  width: 600px;
   transform: translate(-50%);
   background-color: white;
   display: flex;
@@ -17,14 +17,14 @@
 }
 
 .btn{
-  padding: 10px 20px;
-  margin: 20px;
+  padding: 5px 8px;
+  margin: 5px;
   width: 200px;
   border-radius: 5px;
   cursor: pointer;
-  background-color: orangered;
+  background-color: green;
   border: none;
-  font-size: 20px ;
+  font-size: 16px ;
 }
 
 .btn:hover{
@@ -35,14 +35,14 @@ label{
   color: blueviolet;
   font-family: sans-serif;
   margin: 10px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .input{
-  border: 2px solid;
+  border: 1px solid;
   padding: 10px;
   margin: 10px 0;
-  font-size: 20px;
+  font-size: 16px;
   text-align: center;
 }
 
