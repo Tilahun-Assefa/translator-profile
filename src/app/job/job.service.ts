@@ -4,6 +4,7 @@ import { Job } from '../_interfaces/job';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { rxResource } from '@angular/core/rxjs-interop';
+import { setErrorMessage } from '../shared/error-message';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,16 @@ export class JobService {
   errorMessage: string = '';
   urlAddress: string = environment.urlAddress;
 
-  jobResource: ResourceRef<Job[]> = rxResource({
+  private jobResource: ResourceRef<Job[]> = rxResource({
     loader: () => this.http.get<JobResponse>(this.urlAddress + "/api/Job/GetAll").pipe(
       map(jr => jr.data)
     )
   });
   jobs: Signal<Job[]> = computed(() => this.jobResource.value() ?? [] as Job[]);
+  error: Signal<HttpErrorResponse> = computed(() => this.jobResource.error() as HttpErrorResponse);
+  loadingErrorMessage = computed(() => setErrorMessage(this.error(), "Job"));
+  errorStatus = computed(() => this.error().status)
+  isLoading: Signal<boolean> = this.jobResource.isLoading;
 
   // updatedJobs: WritableSignal<Job[]> = signal<Job[]>([]);
 

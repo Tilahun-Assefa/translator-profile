@@ -24,6 +24,9 @@ export class JobComponent {
   type: WritableSignal<string> = signal('all');
 
   filteredJobs: WritableSignal<Job[]> = signal<Job[]>([]);
+  isLoading = this.jobService.isLoading;
+  loadingErrorMessage = this.jobService.loadingErrorMessage;
+
   jobsCount = computed(() => `Jobs found ${this.filteredJobs().length}`);
   jobSearchParameters = computed(() => `Query ${this.query()} with type ${this.type()}`);
 

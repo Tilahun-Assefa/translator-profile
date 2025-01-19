@@ -9,6 +9,11 @@ import { DatePipe } from '@angular/common';
   styleUrls: []
 })
 export class ChatComponent {
-  messages = inject(ChatService).messages;
+  chatService = inject(ChatService)
+  messages = this.chatService.messages;
+
+  enableWebSocket() {
+
+  }
 }
 

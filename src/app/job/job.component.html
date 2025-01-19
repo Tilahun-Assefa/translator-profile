@@ -22,7 +22,11 @@
         </div>
     </fieldset>
 </section>
-
+@if(isLoading()){
+<div>...Loading products</div>
+}@else if(loadingErrorMessage()){
+<div style="color: red;">An error occured: {{loadingErrorMessage()}}</div>
+}@else {
 @if (filteredJobs().length >0) {
 <section class="job-section">
     <h2 class="profile-header">Job List</h2>
@@ -32,4 +36,5 @@
         }
     </article>
 </section>
+}
 }

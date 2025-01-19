@@ -8,3 +8,16 @@
     </div>
     }
 </article>
+
+@switch (chatService.status()) {
+@case ('failed') {
+<p class="">Could not establish connection.</p>
+}
+@case ('connected') {
+<p class="">Connection established</p>
+}
+}
+
+<div>
+    <button class="button button-primary" (click)="enableWebSocket()"> Enable Chat</button>
+</div>
