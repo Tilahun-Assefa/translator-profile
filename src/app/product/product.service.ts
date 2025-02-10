@@ -26,7 +26,7 @@ export class ProductService {
   total: Signal<number> = computed(() => (this.selectedProduct()?.price ?? 0) * this.quantity());
   color: Signal<string> = computed(() => this.total() > 400 ? 'green' : 'red');
 
-  private productResource: ResourceRef<Product[]> = rxResource({
+  private productResource: ResourceRef<Product[]| undefined> = rxResource({
     loader: () => this.http.get<ProductResponse>(this.urlProduct + "/api/Product/GetAll").pipe(
       map(pr => pr.data),
       delay(2000)
