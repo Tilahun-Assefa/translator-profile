@@ -16,7 +16,7 @@ export const routes: Routes = [
   { path: 'products', loadComponent: () => import('./product/product.component').then(m => m.ProductComponent) },
   { path: 'jobs', loadComponent: () => import('./job/job.component').then(m => m.JobComponent) },
   { path: 'add-job', loadComponent: () => import('./job/add-job/add-job.component').then(m => m.AddJobComponent) },
-  { path: '404', component: NotFoundComponent },
+  { path: 'update-job/:id', loadComponent: () => import('./job/update-job/update-job.component').then(u => u.UpdateJobComponent) },
   { path: '500', component: InternalServerComponent },
   { path: '', redirectTo: 'list', pathMatch: 'full' },
   { path: '**', redirectTo: '/404', pathMatch: 'full' }

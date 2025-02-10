@@ -21,4 +21,5 @@ export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
       loadingService.stop();
       return throwError(() => err);
     }),
-  );};
+  );
+};

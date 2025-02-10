@@ -1,8 +1,8 @@
 <div class="container">
-    <form novalidate [formGroup]="addJobForm" (ngSubmit)="onSubmit()" class="cart-form">
+    <form novalidate [formGroup]="updateJobForm" (ngSubmit)="onSubmit()" class="cart-form">
         <div class="cart-form-row">
             <label for="slotting_date"> Date </label>
-            <input id="slotting_date" type="date" class="input" formControlName="slottingDate">
+            <input id="slotting_date" type="datetime-local" class="input" formControlName="slottingDate">
         </div>
 
         <div class="cart-form-row">
@@ -34,7 +34,7 @@
             <input id="pack_qty" type="number" class="input" formControlName="packQty">
         </div>
         <div class="cart-form-row">
-            <button class="btn" type="submit">Save</button>
+            <button class="btn" type="submit">Update</button>
         </div>
     </form>
     <div class="cart-form-row">

@@ -9,7 +9,7 @@ import { JobCreateForm } from 'src/app/_interfaces/form/job-create-form';
   selector: 'app-add-job',
   imports: [ReactiveFormsModule],
   templateUrl: 'add-job.component.html',
-  styleUrls:['add-job.component.css']
+  styleUrls: ['add-job.component.css']
 })
 export class AddJobComponent implements OnInit {
   fb = inject(FormBuilder);
@@ -17,12 +17,14 @@ export class AddJobComponent implements OnInit {
   router = inject(Router);
   route = inject(ActivatedRoute);
 
+   PackCodeTVH = ["BG01PB", "TBP03", "TBP06", "TBP09", "BG412PB", "BG418PB", "BG424PB", "BG536PB"];
+
   addJobForm!: FormGroup<JobCreateForm>;
   errorMessage: string = '';
 
   ngOnInit(): void {
     this.addJobForm = this.fb.group<JobCreateForm>({
-      date: new FormControl(new Date(), Validators.required),
+      slottingDate: new FormControl(new Date(), Validators.required),
       partNumber: new FormControl(''),
       quantity: new FormControl(1),
       startTime: new FormControl(new Date(), Validators.required),
@@ -36,7 +38,7 @@ export class AddJobComponent implements OnInit {
     // Process checkout data here
     if (this.addJobForm?.valid) {
       const newJob: Job = {
-        date: this.addJobForm.value.date,
+        slottingDate: this.addJobForm.value.slottingDate,
         partNumber: this.addJobForm.value.partNumber,
         quantity: this.addJobForm.value.quantity,
         startTime: this.addJobForm.value.startTime,

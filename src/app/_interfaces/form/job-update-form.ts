@@ -1,6 +1,7 @@
 import { FormControl } from "@angular/forms";
 
-export interface JobCreateForm {
+export interface JobUpdateForm {
+    id: FormControl<string |null>;
     slottingDate?: FormControl<Date | null>;
     partNumber?: FormControl<string | null>;
     quantity?: FormControl<number | null>;

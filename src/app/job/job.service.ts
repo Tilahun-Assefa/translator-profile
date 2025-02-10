@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { computed, inject, Injectable, ResourceRef, Signal } from '@angular/core';
 import { Job } from '../_interfaces/job';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { setErrorMessage } from '../shared/error-message';
@@ -11,7 +11,6 @@ import { setErrorMessage } from '../shared/error-message';
 })
 export class JobService {
   http = inject(HttpClient);
-
   errorMessage: string = '';
   urlAddress: string = environment.urlAddress;
 
@@ -37,26 +36,42 @@ export class JobService {
   // }
 
   public getOneJob = (route: string): Observable<JobResponse> => {
-    return this.http.get<JobResponse>(this.createCompleteRoute(route, this.urlAddress));
+    return this.http.get<JobResponse>(this.createCompleteRoute(route, this.urlAddress))
+      .pipe(
+        map(jr => jr)
+      );
   }
 
   public createJob = (route: string, job: Job): void => {
-    this.http.post<JobResponse>(this.createCompleteRoute(route, this.urlAddress), job, this.generateHeaders()).pipe(
-      map(res => res.data)
-    ).subscribe(
-      {
-        next: (res: any) => {
-          // this.updatedJobs.set(res.data);
-          this.jobs = computed(() => res ?? [] as Job[]);
-        },
-        error: (err: HttpErrorResponse) => {
-          this.errorMessage = err.message;
-        }
-      });
+    this.http.post<JobResponse>(this.createCompleteRoute(route, this.urlAddress), job, this.generateHeaders())
+      .pipe(
+        map(res => res.data)
+      ).subscribe(
+        {
+          next: (res: any) => {
+            this.jobs = computed(() => res ?? [] as Job[]);
+          },
+          error: (err: HttpErrorResponse) => {
+            this.errorMessage = err.message;
+          }
+        });
   }
 
-  public updateJob = (route: string, job: Job): Observable<any> => {
-    return this.http.put(this.createCompleteRoute(route, this.urlAddress), job, this.generateHeaders());
+  public updateJob = (route: string, job: Job): void => {
+    this.http.put<JobResponse>(this.createCompleteRoute(route, this.urlAddress), job, this.generateHeaders())
+      .pipe(
+        tap(res => console.log(res)),
+        map(res => res.data),
+        catchError(err => this.handleError(err))
+      ).subscribe(
+        {
+          next: (res: any) => {
+            console.log(res);
+          },
+          error: (err: HttpErrorResponse) => {
+            this.errorMessage = err.message;
+          }
+        });
   }
   public deleteJob = (route: string): Observable<any> => {
     return this.http.delete(this.createCompleteRoute(route, this.urlAddress));
@@ -70,6 +85,23 @@ export class JobService {
     return {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     }
+  }
+
+  private handleError(err: HttpErrorResponse): Observable<never> {
+    // in a real world app, we may send the server to some remote logging infrastructure
+    // instead of just logging it to the console
+    let errorMessage = '';
+    if (err.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      errorMessage = `An error occurred: ${err.error.message}`;
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      errorMessage = `Server returned code: ${err.status}, error message is: ${err.message
+        }`;
+    }
+    console.error(errorMessage);
+    return throwError(() => errorMessage);
   }
 }
 

@@ -1,10 +1,11 @@
   <article class="job-card">
-    <p class="profile-name">Date: {{ job.date | date:'mediumDate' }}</p>
+    <p class="profile-name">Date: {{ job.slottingDate | date:'mediumDate' }}</p>
     <p class="job-headline">Part Number: {{ job.partNumber }}</p>
     <p class="profile-description">Quantity: {{ job.quantity }}</p>
     <p>Start Time: {{job.startTime | date:'short'}}</p>
     <p>Finish Time: {{job.finishTime | date:'short' }}</p>
     <p>Pack Code: {{job.packCode}}</p>
     <p>Pieces in Pack: {{job.packQty}}</p>
-    <p>Points: {{job.points}}</p>
+    <button type="button" id="update" class="btn btn-success" (click)="redirectToUpdatePage(job.id)">Update</button>
+
   </article>
