@@ -14,6 +14,7 @@ import { interval, map } from 'rxjs';
   styleUrls: ["job.component.css"]
 })
 export class JobComponent {
+
   private jobService = inject(JobService);
   router = inject(Router);
 
@@ -25,6 +26,7 @@ export class JobComponent {
   filteredJobs: WritableSignal<Job[]> = signal<Job[]>([]);
   isLoading = this.jobService.isLoading;
   loadingErrorMessage = this.jobService.loadingErrorMessage;
+  dataIsStale = this.jobService.dataStale;
 
   jobsCount = computed(() => `Jobs found ${this.filteredJobs().length}`);
   jobSearchParameters = computed(() => `Query ${this.query()} with type ${this.type()}`);
@@ -44,6 +46,10 @@ export class JobComponent {
     this.type.update(t => t = this.typeCtl.value);
     const jobs: Signal<Job[]> = await this.jobService.find(this.query(), this.type())
     this.filteredJobs.update((fj) => fj = jobs());
+  }
+
+  refreshSlottingList() {
+    this.jobService.reloadData();
   }
 
   createJob() {

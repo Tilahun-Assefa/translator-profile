@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { computed, inject, Injectable, ResourceRef, Signal } from '@angular/core';
+import { computed, inject, Injectable, linkedSignal, ResourceRef, ResourceStatus, Signal } from '@angular/core';
 import { Job } from '../_interfaces/job';
 import { catchError, map, Observable, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
@@ -10,11 +10,12 @@ import { setErrorMessage } from '../shared/error-message';
   providedIn: 'root'
 })
 export class JobService {
+
   http = inject(HttpClient);
   errorMessage: string = '';
   urlAddress: string = environment.urlAddress;
 
-  private jobResource: ResourceRef<Job[]| undefined> = rxResource({
+  private jobResource: ResourceRef<Job[] | undefined> = rxResource({
     loader: () => this.http.get<JobResponse>(this.urlAddress + "/api/Job/GetAll").pipe(
       map(jr => jr.data)
     )
@@ -25,15 +26,34 @@ export class JobService {
   errorStatus = computed(() => this.error().status)
   isLoading: Signal<boolean> = this.jobResource.isLoading;
 
+  private timerId = 0 as any;
+
+  dataStale = linkedSignal({
+    source: this.jobResource.status,
+    computation: (status) => {
+      if (this.timerId > 0) {
+        clearTimeout(this.timerId)
+      }
+      if (status === ResourceStatus.Resolved) {
+        this.timerId = setTimeout(() => {
+          this.dataStale.set(true);
+          this.timerId = 0;
+        }, 300000);
+      }
+      return false;
+    }
+  });
+
+  reloadData() {
+    this.jobResource.reload();
+  }
   // updatedJobs: WritableSignal<Job[]> = signal<Job[]>([]);
 
   public find = (query: string, qType: string) => {
     const selectedJobs = computed(() => this.jobs().filter(j => !query || j.partNumber?.includes(query)));
     return selectedJobs;
   }
-  // public getJobs = (route: string): Observable<Job[]> => {
-  //   return this.http.get<Job[]>(this.createCompleteRoute(route, this.urlAddress));
-  // }
+
 
   public getOneJob = (route: string): Observable<JobResponse> => {
     return this.http.get<JobResponse>(this.createCompleteRoute(route, this.urlAddress))
@@ -66,7 +86,7 @@ export class JobService {
       ).subscribe(
         {
           next: (res: any) => {
-            console.log(res);
+            this.jobResource.reload();
           },
           error: (err: HttpErrorResponse) => {
             this.errorMessage = err.message;

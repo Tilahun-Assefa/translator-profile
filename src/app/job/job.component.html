@@ -4,6 +4,8 @@
     <p>Current Time: {{curTime()}}</p>
 </div>
 <button type="button" class="button_1" (click)="createJob()">Add Job</button>
+<button type="button" class="button_2" (click)="refreshSlottingList()">Refresh</button>
+
 <section id="query">
     <div class="container">
         <label for="query">Query: </label>
@@ -23,10 +25,13 @@
     </fieldset>
 </section>
 @if(isLoading()){
-<div>...Loading products</div>
+<div>...Loading slotting</div>
 }@else if(loadingErrorMessage()){
 <div style="color: red;">An error occured: {{loadingErrorMessage()}}</div>
 }@else {
+    @if(dataIsStale()){
+        <div style="color:red">The slotting data may change. Please Refresh</div>
+    }
 @if (filteredJobs().length >0) {
 <section class="job-section">
     <h2 class="profile-header">Job List</h2>

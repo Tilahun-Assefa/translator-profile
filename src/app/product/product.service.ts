@@ -12,6 +12,7 @@ export class ProductService {
   private urlProduct = environment.urlAddress;
   private http = inject(HttpClient);
 
+  //signals managed byservice
   selectedProduct = signal<Product | undefined>(undefined);
 
   quantity: Signal<number> = linkedSignal({
@@ -26,11 +27,24 @@ export class ProductService {
   total: Signal<number> = computed(() => (this.selectedProduct()?.price ?? 0) * this.quantity());
   color: Signal<string> = computed(() => this.total() > 400 ? 'green' : 'red');
 
-  private productResource: ResourceRef<Product[]| undefined> = rxResource({
-    loader: () => this.http.get<ProductResponse>(this.urlProduct + "/api/Product/GetAll").pipe(
-      map(pr => pr.data),
-      delay(2000)
-    )
+  //First page of products
+  //if the price is empty assign a price(if we can not modify in the backend)
+  private products$ = this.http.get<ProductResponse>(this.urlProduct + "/api/Product/GetAll").pipe(
+    map(pr => pr.data.map((p) => ({
+      ...p,
+      price: isNaN(Number(p.price)) ? Math.round(Math.random() * 10000) : p.price,
+    }) as Product)
+    ),
+    delay(2000)
+  );
+
+
+  private productResource: ResourceRef<Product[] | undefined> = rxResource({
+    loader: () => this.products$
+    // loader: () => this.http.get<ProductResponse>(this.urlProduct + "/api/Product/GetAll").pipe(
+    //   map(pr => pr.data),
+    //   delay(2000)
+    // )
   });
 
   products: Signal<Product[]> = computed(() => this.productResource.value() ?? [] as Product[]);

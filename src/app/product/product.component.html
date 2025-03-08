@@ -1,6 +1,7 @@
 <h2>Product Sales</h2>
+
 @if(isLoading()){
-    <div>...Loading products</div>
+<div>...Loading products</div>
 }@else if(errorMessage()){
 <div style="color: red;">An error occured: {{errorMessage()}}</div>
 }@else {

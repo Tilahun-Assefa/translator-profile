@@ -32,7 +32,15 @@
     margin: 10px;
     color:#ffffff;
 }
-
+.button_2{
+    height: 38px;
+    background: #0b87b8;
+    border: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 10px;
+    color:#ffffff;
+}
 #query{
     padding: 15px;
     color: #000;
