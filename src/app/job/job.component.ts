@@ -33,6 +33,7 @@ export class JobComponent {
 
   now = toSignal(interval(1000).pipe(map(() => new Date())), { initialValue: new Date() });
   curTime = computed(() => this.now()?.toLocaleTimeString());
+  
 
   constructor() {
     effect(() => {
@@ -44,7 +45,7 @@ export class JobComponent {
   async search() {
     this.query.update(q => q = this.queryCtl.value);
     this.type.update(t => t = this.typeCtl.value);
-    const jobs: Signal<Job[]> = await this.jobService.find(this.query(), this.type())
+    const jobs: Signal<Job[]> = this.jobService.find(this.query(), this.type())
     this.filteredJobs.update((fj) => fj = jobs());
   }
 

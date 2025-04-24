@@ -14,6 +14,7 @@ export class ProductService {
 
   //signals managed byservice
   selectedProduct = signal<Product | undefined>(undefined);
+  productId = signal<number | undefined>(undefined);
 
   quantity: Signal<number> = linkedSignal({
     source: this.selectedProduct,
@@ -53,13 +54,25 @@ export class ProductService {
   errorStatus = computed(() => this.error().status)
   isLoading: Signal<boolean> = this.productResource.isLoading;
 
-  private errEffect = effect(() => console.error("Error", this.error()));
+
+  private productByIdResource = httpResource<ProductResponseById>(() => this.productId() ? `${this.urlProduct}/api/Product?id=${this.productId()}` : undefined);
+  productById: Signal<Product> = computed(() => this.productByIdResource.value()?.data ?? {} as Product);
+  errorById: Signal<HttpErrorResponse> = computed(() => this.productByIdResource.error() as HttpErrorResponse);
+  errorMessageById = computed(() => setErrorMessage(this.errorById(), "ProductById"));
+  errorStatusById = computed(() => this.errorById().status)
+  isLoadingById: Signal<boolean> = this.productByIdResource.isLoading;
 }
 
 export interface ProductResponse {
   success: boolean;
   message: string;
   data: Product[];
+}
+
+export interface ProductResponseById {
+  success: boolean;
+  message: string;
+  data: Product;
 }
 
 export interface Product {

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { User } from '../_interfaces/user';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthService {
 
   private userSubject: BehaviorSubject<User | null>;
   public user$: Observable<User | null>;
-  private apiUrl = 'http://localhost:3002/api';
+  private apiUrl = environment.urlAddress;
 
   constructor(private http: HttpClient, private router: Router) {
     this.userSubject = new BehaviorSubject<User | null>(JSON.parse(localStorage.getItem('user')!));
