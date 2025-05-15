@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, httpResource } from '@angular/common/http';
 import { computed, effect, inject, Injectable, linkedSignal, ResourceRef, Signal, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { delay, map } from 'rxjs';
@@ -14,7 +14,6 @@ export class ProductService {
 
   //signals managed byservice
   selectedProduct = signal<Product | undefined>(undefined);
-  productId = signal<number | undefined>(undefined);
 
   quantity: Signal<number> = linkedSignal({
     source: this.selectedProduct,
@@ -54,13 +53,11 @@ export class ProductService {
   errorStatus = computed(() => this.error().status)
   isLoading: Signal<boolean> = this.productResource.isLoading;
 
+  getProductById(productId: Signal<number>) {
+    return httpResource<ProductResponseById>(() => productId() ? `${this.urlProduct}/api/Product/${productId()}` : undefined);
+  }
 
-  private productByIdResource = httpResource<ProductResponseById>(() => this.productId() ? `${this.urlProduct}/api/Product?id=${this.productId()}` : undefined);
-  productById: Signal<Product> = computed(() => this.productByIdResource.value()?.data ?? {} as Product);
-  errorById: Signal<HttpErrorResponse> = computed(() => this.productByIdResource.error() as HttpErrorResponse);
-  errorMessageById = computed(() => setErrorMessage(this.errorById(), "ProductById"));
-  errorStatusById = computed(() => this.errorById().status)
-  isLoadingById: Signal<boolean> = this.productByIdResource.isLoading;
+
 }
 
 export interface ProductResponse {

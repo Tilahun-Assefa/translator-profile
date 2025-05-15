@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute,
     private router: Router, private authService: AuthService) {
-    if (this.authService.userValue) {
+    if (this.authService.isLoggedIn()) {
       //if the user authenticated go to homepage
       this.router.navigate(['/']);
     }

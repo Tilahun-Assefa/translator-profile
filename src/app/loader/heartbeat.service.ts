@@ -10,7 +10,7 @@ import { withSilentLoadContext } from './with-silent-load-context';
 export class HeartbeatService {
   #httpClient = inject(HttpClient);
 
-  #apiReachable$ = interval(5000).pipe(
+  #apiReachable$ = interval(50000).pipe(
     startWith(0),
     switchMap(() =>
       window.navigator.onLine

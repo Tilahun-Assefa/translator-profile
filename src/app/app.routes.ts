@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { TranslatorsListComponent } from './translator-profile/translators-list.component';
 import { canActivate } from './login/can_activate';
 import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 import { InternalServerComponent } from './error-pages/internal-server/internal-server.component';
 
 export const routes: Routes = [

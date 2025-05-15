@@ -8,7 +8,7 @@ export const canActivate: CanActivateFn = (route: ActivatedRouteSnapshot,
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  // return authService.user$
+  // return authService.token$
   //   .pipe(
   //     map(() => true),
   //     catchError(() => {

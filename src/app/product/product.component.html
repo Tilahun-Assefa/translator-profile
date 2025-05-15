@@ -23,3 +23,24 @@
 <div [style.color]="color()">Total: {{total()}}</div>
 <button type="button" (click)="addToCart(selectedProduct(), quantity())">Buy</button>
 }
+<section>
+    @if(isLoadingById()){
+    <div>...Loading product by Id</div>
+    }@else if(errorMessageById()){
+    <div style="color: red;">An error occured: {{errorMessageById()}}</div>
+    }@else {
+    <select [(ngModel)]="productId">
+        <option value="undefined" disabled selected>--select a product Id--</option>
+        @for (item of products(); track $index) {
+        <option [ngValue]="item.id">{{item.name}}</option>
+        }
+    </select>  
+    <div>
+        Name: {{productById().name}}
+        <br>
+        Cost: {{productById().price}}
+        <br>
+        Part Number: {{productById().partNumber}}
+    </div>
+    }
+</section>
