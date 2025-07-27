@@ -53,11 +53,9 @@ export class ProductService {
   errorStatus = computed(() => this.error().status)
   isLoading: Signal<boolean> = this.productResource.isLoading;
 
-  getProductById(productId: Signal<number>) {
+  getProductById(productId: Signal<number| undefined>) {
     return httpResource<ProductResponseById>(() => productId() ? `${this.urlProduct}/api/Product/${productId()}` : undefined);
   }
-
-
 }
 
 export interface ProductResponse {

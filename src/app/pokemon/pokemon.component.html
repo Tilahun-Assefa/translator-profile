@@ -1,21 +1,21 @@
 <div class="main-container">
-    <select [formControl]="selectedPokemon">
-        <option disabled value="" selected>--select a pokemon--</option>
-        @for (pokemon of pokemonArr; track pokemon) {
+    <select [formControl]="selectedPokemonCtl">
+        <option disabled value="undefined" selected>--select a pokemon--</option>
+        @for (pokemon of pokemons(); track $index) {
         <option [ngValue]="pokemon"> {{ pokemon.name }} </option>
         }
     </select>
 
     <div class="card">
-        <img src="{{selectedPokemon.value?.imageUrl}}" class="pokemon-image"
-            alt="Image of {{selectedPokemon.value?.name}}" />
-        <h2 class="pokemon-name">{{selectedPokemon.value?.name}}</h2>
-        <p class="pokemon-description">{{selectedPokemon.value?.description}}</p>
+        <img src="{{selectedPokemonCtl.value?.imageUrl}}" class="pokemon-image"
+            alt="Image of {{selectedPokemonCtl.value?.name}}" />
+        <h2 class="pokemon-name">{{selectedPokemonCtl.value?.name}}</h2>
+        <p class="pokemon-description">{{selectedPokemonCtl.value?.description}}</p>
     </div>
     <div class="btn-container">
         <button id="prev" class="btn" [disabled]="i<=0"><i class="fas fa-angle-double-left btn prev "
                 (click)="onPrev()"></i></button>
-        <button id="next" class="btn" [disabled]="i>=pokemonArr.length-1"><i class="fas fa-angle-double-right btn next"
+        <button id="next" class="btn" [disabled]="i>=pokemons().length-1"><i class="fas fa-angle-double-right btn next"
                 (click)="onNext()"></i></button>
     </div>
 </div>

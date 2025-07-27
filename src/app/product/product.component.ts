@@ -14,7 +14,7 @@ import { setErrorMessage } from '../shared/error-message';
 export class ProductComponent {
   private productService = inject(ProductService);
   cartService = inject(CartService);
-  productId = signal<number>(0);
+  productId = signal<number| undefined>(undefined);
 
   products = this.productService.products;
   selectedProduct = this.productService.selectedProduct;
