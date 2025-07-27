@@ -40,7 +40,7 @@ export class ProductService {
 
 
   private productResource: ResourceRef<Product[] | undefined> = rxResource({
-    loader: () => this.products$
+    fetch: () => this.products$
     // loader: () => this.http.get<ProductResponse>(this.urlProduct + "/api/Product/GetAll").pipe(
     //   map(pr => pr.data),
     //   delay(2000)

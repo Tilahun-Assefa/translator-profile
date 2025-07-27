@@ -16,7 +16,7 @@ export class JobService {
   urlAddress: string = environment.urlAddress;
 
   private jobResource: ResourceRef<Job[] | undefined> = rxResource({
-    loader: () => this.http.get<JobResponse>(this.urlAddress + "/api/Job/GetAll").pipe(
+    fetcher: () => this.http.get<JobResponse>(this.urlAddress + "/api/Job/GetAll").pipe(
       map(jr => jr.data)
     )
   });
