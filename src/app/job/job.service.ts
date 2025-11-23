@@ -16,7 +16,7 @@ export class JobService {
   urlAddress: string = environment.urlAddress;
 
   private jobResource: ResourceRef<Job[] | undefined> = rxResource({
-    fetcher: () => this.http.get<JobResponse>(this.urlAddress + "/api/Job/GetAll").pipe(
+    stream: () => this.http.get<JobResponse>(this.urlAddress + "/api/Job/GetAll").pipe(
       map(jr => jr.data)
     )
   });
@@ -34,7 +34,7 @@ export class JobService {
       if (this.timerId > 0) {
         clearTimeout(this.timerId)
       }
-      if (status === ResourceStatus.Resolved) {
+      if (status === "resolved") {
         this.timerId = setTimeout(() => {
           this.dataStale.set(true);
           this.timerId = 0;

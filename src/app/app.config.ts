@@ -9,7 +9,11 @@ import { DatePipe } from '@angular/common';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 export const appConfig: ApplicationConfig = {
-  providers: [importProvidersFrom(BrowserModule, BrowserAnimationsModule, CollapseModule.forRoot(), ModalModule.forRoot()),DatePipe,
+  providers: [
+    importProvidersFrom(BrowserModule, BrowserAnimationsModule,
+     CollapseModule.forRoot(), ModalModule.forRoot()
+    ),
+     DatePipe,
     provideRouter(routes),
     provideHttpClient(),
   ]
