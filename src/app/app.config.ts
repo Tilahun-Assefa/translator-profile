@@ -8,13 +8,21 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { DatePipe } from '@angular/common';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+// Application-level provider configuration. Keeping `importProvidersFrom` here
+// ensures NgModules from third-party libraries are available to the new
+// standalone provider model.
 export const appConfig: ApplicationConfig = {
   providers: [
-    importProvidersFrom(BrowserModule, BrowserAnimationsModule,
-     CollapseModule.forRoot(), ModalModule.forRoot()
+    importProvidersFrom(
+      BrowserModule,
+      BrowserAnimationsModule,
+      CollapseModule.forRoot(),
+      ModalModule.forRoot()
     ),
-     DatePipe,
+    // Global pipes / services
+    DatePipe,
+    // Router and HTTP providers
     provideRouter(routes),
     provideHttpClient(),
-  ]
+  ],
 };
