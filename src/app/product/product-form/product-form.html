@@ -1,0 +1,86 @@
+<div class="card">
+    <div class="card-header">Add Product</div>
+    <div class="card-body">
+        <form>
+            <div class="row">
+                <label for="name"> Product Name </label>
+                <div class="row-value">
+                    <input id="name" type="text" class="form-control" [formField]="productForm.name"
+                        placeholder="Product Name">
+                </div>
+                @if(productForm.name().invalid() && productForm.name().touched()) {
+                <div class="error-messages">
+                    @for(err of productForm.name().errors(); track err.kind) {
+                    <small class="text-danger">{{err.message}}</small>
+                    }
+                </div>
+                }
+            </div>
+
+            <div class="row">
+                <label for="part_no"> PartNumber </label>
+                <div class="row-value">
+                    <input id="part_no" type="text" class="form-control" [formField]="productForm.partNumber"
+                        placeholder="Part Number">
+                </div>
+                @if(productForm.partNumber().invalid() && productForm.partNumber().touched()) {
+                <div class="error-messages">
+                    @for(err of productForm.partNumber().errors(); track err.kind) {
+                    <small class="text-danger">{{err.message}}</small>
+                    }
+                </div>
+                }
+            </div>
+
+            <div class="row">
+                <label for="price"> Price </label>
+                <div class="row-value">
+                    <input id="price" type="number" class="form-control" [formField]="productForm.price"
+                        placeholder="Price">
+                </div>
+                @if(productForm.price().invalid() && productForm.price().touched()) {
+                <div class="error-messages">
+                    @for(err of productForm.price().errors(); track err.kind) {
+                    <small class="text-danger">{{err.message}}</small>
+                    }
+                </div>
+                }
+            </div>
+
+            <div class="row">
+                <label for="description"> Description </label>
+                <div class="row-value">
+                    <input id="description" type="text" class="form-control" [formField]="productForm.description"
+                        placeholder="Description">
+                </div>
+                @if(productForm.description().invalid() && productForm.description().touched()) {
+                <div class="error-messages">
+                    @for(err of productForm.description().errors(); track err.kind) {
+                    <small class="text-danger">{{err.message}}</small>
+                    }
+                </div>
+                }
+            </div>
+            <div class="row">
+                <label for="rating"> Rating </label>
+                <div class="row-value">
+                    <input id="rating" type="number" class="form-control" [formField]="productForm.rating"
+                        placeholder="Rating">
+                </div>
+                @if(productForm.rating().invalid() && productForm.rating().touched()) {
+                <div class="error-messages">
+                    @for(err of productForm.rating().errors(); track err.kind) {
+                    <small class="text-danger">{{err.message}}</small>
+                    }
+                </div>
+                }
+            </div>
+            <div class="row">
+                <button class="btn btn-primary" type="submit" [disabled]="productForm().invalid()">Save</button>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <button class="btn btn-secondary" type="button" (click)="returnToProductList()">Cancel</button>
+    </div>
+</div>

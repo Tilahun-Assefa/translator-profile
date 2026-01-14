@@ -17,7 +17,7 @@ export class AddJobComponent implements OnInit {
   router = inject(Router);
   route = inject(ActivatedRoute);
 
-   PackCodeTVH = ["BG01PB", "TBP03", "TBP06", "TBP09", "BG412PB", "BG418PB", "BG424PB", "BG536PB"];
+  PackCodeTVH = ["BG01PB", "TBP03", "TBP06", "TBP09", "BG412PB", "BG418PB", "BG424PB", "BG536PB"];
 
   addJobForm!: FormGroup<JobCreateForm>;
   errorMessage: string = '';
@@ -25,7 +25,7 @@ export class AddJobComponent implements OnInit {
   ngOnInit(): void {
     this.addJobForm = this.fb.group<JobCreateForm>({
       slottingDate: new FormControl(new Date(), Validators.required),
-      partNumber: new FormControl(''),
+      partNumber: new FormControl('', Validators.required),
       quantity: new FormControl(1),
       startTime: new FormControl(new Date(), Validators.required),
       finishTime: new FormControl(new Date(), Validators.required),

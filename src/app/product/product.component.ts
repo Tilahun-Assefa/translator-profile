@@ -1,9 +1,10 @@
 import { Component, computed, effect, inject, signal, Signal } from '@angular/core';
-import { Product, ProductService } from './product.service';
+import { ProductService } from './product.service';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../cart/cart.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { setErrorMessage } from '../shared/error-message';
+import { Product } from './product';
 
 @Component({
   selector: 'app-product',
@@ -14,7 +15,7 @@ import { setErrorMessage } from '../shared/error-message';
 export class ProductComponent {
   private productService = inject(ProductService);
   cartService = inject(CartService);
-  productId = signal<number| undefined>(undefined);
+  productId = signal<number | undefined>(undefined);
 
   products = this.productService.products;
   selectedProduct = this.productService.selectedProduct;

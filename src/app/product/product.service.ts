@@ -1,9 +1,10 @@
-import { HttpClient, HttpErrorResponse, httpResource } from '@angular/common/http';
-import { computed, effect, inject, Injectable, linkedSignal, ResourceRef, Signal, signal } from '@angular/core';
+import { HttpClient, HttpErrorResponse, HttpHeaders, httpResource } from '@angular/common/http';
+import { computed, inject, Injectable, linkedSignal, ResourceRef, Signal, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { delay, map } from 'rxjs';
+import { delay, map, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { setErrorMessage } from '../shared/error-message';
+import { Product, ProductDto, ProductResponse, ProductResponseById } from './product';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ import { setErrorMessage } from '../shared/error-message';
 export class ProductService {
   private urlProduct = environment.urlAddress;
   private http = inject(HttpClient);
+  errorMessageProduct: string = '';
+  urlAddress: string = environment.urlAddress;
 
   //signals managed byservice
   selectedProduct = signal<Product | undefined>(undefined);
@@ -53,28 +56,49 @@ export class ProductService {
   errorStatus = computed(() => this.error().status)
   isLoading: Signal<boolean> = this.productResource.isLoading;
 
-  getProductById(productId: Signal<number| undefined>) {
+  getProductById(productId: Signal<number | undefined>) {
     return httpResource<ProductResponseById>(() => productId() ? `${this.urlProduct}/api/Product/${productId()}` : undefined);
   }
-}
 
-export interface ProductResponse {
-  success: boolean;
-  message: string;
-  data: Product[];
-}
+  public createProduct = (route: string, product: ProductDto): void => {
+    this.http.post<ProductResponse>(this.createCompleteRoute(route, this.urlAddress), product, this.generateHeaders())
+      .pipe(
+        map(res => res.data)
+      ).subscribe(
+        {
+          next: (res: any) => {
+            this.products = computed(() => res ?? [] as Product[]);
+          },
+          error: (err: HttpErrorResponse) => {
+            this.errorMessageProduct = err.message;
+          }
+        });
+  }
 
-export interface ProductResponseById {
-  success: boolean;
-  message: string;
-  data: Product;
-}
+  private createCompleteRoute = (route: string, envAddress: string) => {
+    return `${envAddress}/${route}`;
+  }
 
-export interface Product {
-  id: number;
-  name: string;
-  partNumber: string;
-  price: number;
-  description: string;
-  rating: number;
+  private generateHeaders = () => {
+    return {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    }
+  }
+
+  private handleError(err: HttpErrorResponse): Observable<never> {
+    // in a real world app, we may send the server to some remote logging infrastructure
+    // instead of just logging it to the console
+    let errorMessage = '';
+    if (err.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      errorMessage = `An error occurred: ${err.error.message}`;
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      errorMessage = `Server returned code: ${err.status}, error message is: ${err.message
+        }`;
+    }
+    console.error(errorMessage);
+    return throwError(() => errorMessage);
+  }
 }
