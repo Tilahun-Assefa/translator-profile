@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-header">Add Product</div>
     <div class="card-body">
-        <form>
+        <form (submit)="onSubmit($event)">
             <div class="row">
                 <label for="name"> Product Name </label>
                 <div class="row-value">
@@ -76,7 +76,7 @@
                 }
             </div>
             <div class="row">
-                <button class="btn btn-primary" type="submit" [disabled]="productForm().invalid()">Save</button>
+                <button class="btn btn-primary" type="submit"  [disabled]="productForm().invalid()">Save</button>
             </div>
         </form>
     </div>
