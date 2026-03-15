@@ -62,9 +62,7 @@ export class ProductService {
 
   public createProduct = (route: string, product: ProductDto): void => {
     this.http.post<ProductResponse>(this.createCompleteRoute(route, this.urlAddress), product, this.generateHeaders())
-      .pipe(
-        map(res => res.data)
-      ).subscribe(
+      .subscribe(
         {
           next: (res: any) => {
             this.products = computed(() => res ?? [] as Product[]);
