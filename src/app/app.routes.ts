@@ -1,13 +1,10 @@
 import { Routes } from '@angular/router';
-import { TranslatorsListComponent } from './translator-profile/translators-list.component';
 import { canActivate } from './login/can_activate';
-import { HomeComponent } from './home/home.component';
-import { InternalServerComponent } from './error-pages/internal-server/internal-server.component';
 
 export const routes: Routes = [
-  { path: 'home', component: HomeComponent, canActivate: [canActivate] },
+  { path: 'home', loadComponent: () => import('./home/home.component').then(m => m.HomeComponent), canActivate: [canActivate] },
   { path: 'auth', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
-  { path: 'list', component: TranslatorsListComponent },
+  { path: 'list', loadComponent: () => import('./translator-profile/translators-list.component').then(m => m.TranslatorsListComponent) },
   { path: 'details/:index', loadComponent: () => import('./translator-profile/translator-profile-view/translator-profile-view.component').then(m => m.TranslatorProfileViewComponent) },
   { path: 'cart', loadComponent: () => import('./cart/cart.component').then(m => m.CartComponent) },
   { path: 'shipping', loadComponent: () => import('./shipping/shipping.component').then(m => m.ShippingComponent) },
@@ -20,7 +17,7 @@ export const routes: Routes = [
   { path: 'add-job', loadComponent: () => import('./job/add-job/add-job.component').then(m => m.AddJobComponent) },
   { path: 'update-job/:id', loadComponent: () => import('./job/update-job/update-job.component').then(u => u.UpdateJobComponent) },
 
-  { path: '500', component: InternalServerComponent },
+  { path: '500', loadComponent: () => import('./error-pages/internal-server/internal-server.component').then(m => m.InternalServerComponent) },
   { path: '', redirectTo: 'list', pathMatch: 'full' },
   { path: '**', redirectTo: '/404', pathMatch: 'full' }
 ];

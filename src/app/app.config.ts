@@ -16,8 +16,8 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       BrowserModule,
       BrowserAnimationsModule,
-      CollapseModule.forRoot(),
-      ModalModule.forRoot()
+      CollapseModule,
+      ModalModule
     ),
     // Global pipes / services
     DatePipe,
