@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 import { Translator } from '../profile.service';
 import { RouterModule } from '@angular/router';
@@ -10,6 +10,6 @@ import { RouterModule } from '@angular/router';
     styleUrls: ['translator-list-card.component.css']
 })
 export class TranslatorListCardComponent {
-  @Input() translator!: Translator;
-  @Input() index!: Number;
+  readonly translator = input.required<Translator>();
+  readonly index = input.required<Number>();
 }

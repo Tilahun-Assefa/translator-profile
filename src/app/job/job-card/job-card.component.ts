@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Job } from 'src/app/_interfaces/job';
 
@@ -10,8 +10,8 @@ import { Job } from 'src/app/_interfaces/job';
   styleUrls: ["job-card.component.css"]
 })
 export class JobCardComponent {
-  @Input() job!: Job;
-  @Input() index!: Number;
+  readonly job = input.required<Job>();
+  readonly index = input.required<Number>();
 
   private router = inject(Router);
 
