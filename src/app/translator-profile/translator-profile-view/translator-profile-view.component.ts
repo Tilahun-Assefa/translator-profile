@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileService, Translator } from '../profile.service';
 import { Observable, map } from 'rxjs';
@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
     selector: 'app-translator-profile-view',
     imports: [CommonModule],
     templateUrl: 'translator-profile-view.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['translator-profile-view.component.css']
 })
 export class TranslatorProfileViewComponent implements OnInit {

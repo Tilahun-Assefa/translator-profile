@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Job } from 'src/app/_interfaces/job';
 
@@ -7,6 +7,7 @@ import { Job } from 'src/app/_interfaces/job';
   selector: 'app-job-card',
   imports: [DatePipe],
   templateUrl: "job-card.component.html",
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ["job-card.component.css"]
 })
 export class JobCardComponent {

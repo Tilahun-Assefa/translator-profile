@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, signal, Signal, WritableSignal } from '@angular/core';
+import { Component, computed, effect, inject, signal, Signal, WritableSignal, ChangeDetectionStrategy } from '@angular/core';
 import { JobService } from './job.service';
 import { Job } from '../_interfaces/job';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
@@ -11,6 +11,7 @@ import { interval, map } from 'rxjs';
   selector: 'app-job',
   imports: [ReactiveFormsModule, JobCardComponent],
   templateUrl: 'job.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ["job.component.css"]
 })
 export class JobComponent {

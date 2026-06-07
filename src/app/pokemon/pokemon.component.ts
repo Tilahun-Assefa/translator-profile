@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { PokemonService } from './pokemon.service';
@@ -7,6 +7,7 @@ import { PokemonService } from './pokemon.service';
   selector: 'app-pokemon',
   imports: [ReactiveFormsModule],
   templateUrl: 'pokemon.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['pokemon.component.css']
 })
 export class PokemonComponent {

@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 
 import { Translator } from '../profile.service';
 import { RouterModule } from '@angular/router';
@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
     selector: 'app-translators-list-card',
     imports: [RouterModule],
     templateUrl: 'translator-list-card.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['translator-list-card.component.css']
 })
 export class TranslatorListCardComponent {

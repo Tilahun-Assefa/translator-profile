@@ -1,4 +1,4 @@
-import { Component, Signal } from '@angular/core';
+import { Component, Signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService, OrderLine } from './cart.service';
 import { RouterModule } from '@angular/router';
@@ -8,6 +8,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
   selector: 'app-cart',
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: 'cart.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['cart.component.css']
 })
 export class CartComponent {

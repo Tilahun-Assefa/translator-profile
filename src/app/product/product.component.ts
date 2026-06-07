@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, signal, Signal } from '@angular/core';
+import { Component, computed, effect, inject, signal, Signal, ChangeDetectionStrategy } from '@angular/core';
 import { ProductService } from './product.service';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../cart/cart.service';
@@ -10,6 +10,7 @@ import { Product } from './product';
   selector: 'app-product',
   imports: [FormsModule],
   templateUrl: "product.component.html",
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ["product.component.css"]
 })
 export class ProductComponent {

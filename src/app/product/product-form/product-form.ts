@@ -1,4 +1,4 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductDto, productInitialState, productSchema } from '../product';
 import { FieldTree, form, FormField, submit } from '@angular/forms/signals';
@@ -8,6 +8,7 @@ import { ProductService } from '../product.service';
   selector: 'app-product-form',
   imports: [FormField],
   templateUrl: './product-form.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: [`./product-form.css`],
 })
 export class ProductForm {

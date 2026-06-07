@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, effect, Signal, signal, WritableSignal } from '@angular/core';
+import { Component, computed, effect, Signal, signal, WritableSignal, ChangeDetectionStrategy } from '@angular/core';
 import { CartService } from '../cart/cart.service';
 import { Observable } from 'rxjs';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -8,6 +8,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
   selector: 'app-shipping',
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './shipping.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./shipping.component.css']
 })
 export class ShippingComponent {

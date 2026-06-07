@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'app-internal-server',
     imports: [],
     templateUrl: 'internal-server.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['internal-server.component.css']
 })
 export class InternalServerComponent {

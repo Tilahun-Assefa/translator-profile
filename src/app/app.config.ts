@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { DatePipe } from '@angular/common';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -23,6 +23,6 @@ export const appConfig: ApplicationConfig = {
     DatePipe,
     // Router and HTTP providers
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(withXhr()),
   ],
 };

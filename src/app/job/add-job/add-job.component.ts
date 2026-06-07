@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Job } from 'src/app/_interfaces/job';
@@ -9,6 +9,7 @@ import { JobCreateForm } from 'src/app/_interfaces/form/job-create-form';
   selector: 'app-add-job',
   imports: [ReactiveFormsModule],
   templateUrl: 'add-job.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['add-job.component.css']
 })
 export class AddJobComponent implements OnInit {
