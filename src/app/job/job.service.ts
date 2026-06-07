@@ -65,16 +65,19 @@ export class JobService {
   public createJob = (route: string, job: Job): void => {
     this.http.post<JobResponse>(this.createCompleteRoute(route, this.urlAddress), job, this.generateHeaders())
       .pipe(
-        map(res => res.data)
-      ).subscribe(
-        {
-          next: (res: any) => {
-            this.jobs = computed(() => res ?? [] as Job[]);
-          },
-          error: (err: HttpErrorResponse) => {
-            this.errorMessage = err.message;
-          }
-        });
+        map(res => res.data),
+        catchError(err => {
+          this.errorMessage = err.message;
+          return throwError(() => err);
+        })
+      ).subscribe({
+        next: () => {
+          this.jobResource.reload();
+        },
+        error: (err: HttpErrorResponse) => {
+          this.errorMessage = err.message;
+        }
+      });
   }
 
   public updateJob = (route: string, job: Job): void => {
